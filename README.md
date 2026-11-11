@@ -6,6 +6,8 @@ Seminário e artigo da disciplina **SCX 5002 · Sistemas Complexos I** (USP EACH
 
 ![Capa da apresentação](docs/prints/slide-01-cover.png)
 
+**🌐 Site interativo:** [herculesprof.github.io/usp-scx5002-projeto](https://herculesprof.github.io/usp-scx5002-projeto/): o projeto explicado com gráficos que você manipula, um jogo de adivinhar letras e os dez romances com trechos de abertura.
+
 ---
 
 ## Sumário
@@ -16,6 +18,7 @@ Seminário e artigo da disciplina **SCX 5002 · Sistemas Complexos I** (USP EACH
 - [Ideia 1 · Previsibilidade (entropia)](#ideia-1--previsibilidade-entropia)
 - [Ideia 2 · Lei de Zipf e modelos nulos](#ideia-2--lei-de-zipf-e-modelos-nulos)
 - [Ideia 3 · Emergência e parâmetro de ordem](#ideia-3--emergência-e-parâmetro-de-ordem)
+- [Site interativo](#site-interativo)
 - [A apresentação](#a-apresentação)
 - [Estrutura do repositório](#estrutura-do-repositório)
 - [Como reproduzir](#como-reproduzir)
@@ -150,6 +153,27 @@ O experimento **não** prova que toda emergência em LLMs é ilusória (um n-gra
 
 ![Conclusão](docs/prints/slide-16-conclusao.png)
 
+## Site interativo
+
+O projeto tem um site publicado no GitHub Pages ([herculesprof.github.io/usp-scx5002-projeto](https://herculesprof.github.io/usp-scx5002-projeto/)), no mesmo estilo visual dos slides (Space Grotesk e Inter, creme, azul USP e amarelo). Ele lê os números direto de `results/resultados.json` e desenha os gráficos em SVG, sem bibliotecas externas.
+
+| O que tem | Interação |
+| --- | --- |
+| Jogo da próxima letra | Adivinhe, letra por letra, um trecho de Machado; o placar conta tentativas por letra, a versão humana da entropia |
+| Entropia por contexto | Controle deslizante de 0 a 8 letras: bits por caractere, redundância e faixa entre romances |
+| Lei de Zipf | Liga e desliga Machado e os dois modelos nulos; mostra a palavra de cada posto; cada método de ajuste destaca sua faixa no gráfico |
+| Parâmetro de ordem | Controle de L (1 a 20): a curva prevista φᴸ e o acerto exato medido mostram o "salto" que não existe em φ |
+| Os dez romances | Capas ilustrativas, filtro por fase e, para cada livro, o trecho de abertura, o resumo e as medidas |
+
+| | |
+| --- | --- |
+| ![Capa do site](docs/prints/site-capa.png) | ![Jogo e entropia](docs/prints/site-previsibilidade.png) |
+| ![Experimento do parâmetro de ordem](docs/prints/site-emergencia.png) | ![Trecho de Dom Casmurro](docs/prints/site-romance.png) |
+
+As capas foram criadas para o site no estilo da apresentação e não reproduzem edições históricas. Os trechos são as primeiras linhas de cada romance no corpus, em domínio público, extraídas por `src/extrair_trechos.py`.
+
+**Publicação.** O workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) roda `src/montar_site.py` e publica `_site/` a cada push na `main` que altere o site ou os resultados. Na primeira vez, ative em *Settings → Pages → Build and deployment → Source: GitHub Actions*.
+
 ## A apresentação
 
 Seminário pré-gravado de **18 minutos**, 18 slides em 1920 × 1080, com notas do apresentador em cada slide e roteiro de fala completo em [`docs/roteiro.md`](docs/roteiro.md).
@@ -185,7 +209,11 @@ Seminário pré-gravado de **18 minutos**, 18 slides em 1920 × 1080, com notas 
 │   ├── analise.py               análise completa -> results/resultados.json
 │   ├── figuras.py               figuras do artigo -> figuras/*.png
 │   ├── montar_apresentacao.py   slides -> apresentacao/apresentacao.html (e .pdf)
-│   └── gerar_prints.py          prints dos slides -> docs/prints/*.png
+│   ├── gerar_prints.py          prints dos slides -> docs/prints/*.png
+│   ├── extrair_trechos.py       trechos e dados dos romances -> site/dados/romances.json
+│   └── montar_site.py           site + resultados + figuras -> _site/ (GitHub Pages)
+├── site/                        site interativo (index.html, estilo.css, app.js, dados/)
+├── .github/workflows/pages.yml  publicação automática no GitHub Pages
 ├── data/                        corpus baixado (fora do git, ver data/README.md)
 ├── results/resultados.json      todos os números do artigo e dos slides
 ├── figuras/                     4 figuras do artigo em PNG
@@ -195,7 +223,7 @@ Seminário pré-gravado de **18 minutos**, 18 slides em 1920 × 1080, com notas 
 │   ├── proposta.md              proposta, feedback do professor e ajustes feitos
 │   ├── romances.md              os dez romances, com resumos
 │   ├── metodologia.md           ferramentas e métodos
-│   └── prints/                  um PNG por slide, usados neste README
+│   └── prints/                  prints dos slides e do site, usados neste README
 ├── apresentacao/
 │   ├── deck.json                ordem e seções dos slides
 │   ├── slides/*.html            um slide por arquivo (1920 × 1080), notas em <aside>
@@ -236,6 +264,14 @@ Opcional, exportar o PDF e os prints dos slides (requer Playwright):
 pip install playwright && playwright install chromium
 python src/montar_apresentacao.py --pdf  # também gera apresentacao/apresentacao.pdf
 python src/gerar_prints.py               # -> docs/prints/*.png
+```
+
+Site (só a biblioteca padrão):
+
+```bash
+python src/extrair_trechos.py            # -> site/dados/romances.json (requer o corpus baixado)
+python src/montar_site.py                # -> _site/
+python -m http.server 8000 -d _site      # abrir http://localhost:8000
 ```
 
 A semente aleatória é fixa (42): `analise.py` reproduz os mesmos números do `results/resultados.json` versionado (só o campo de tempo de execução muda).

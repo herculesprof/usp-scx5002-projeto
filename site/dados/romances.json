@@ -1,0 +1,112 @@
+[
+  {
+    "id": "marm01",
+    "titulo": "Ressurreição",
+    "ano": 1872,
+    "data": "1872",
+    "fase": "romântica",
+    "palavras": 36139,
+    "alfa": 1.018,
+    "resumo": "Primeiro romance de Machado. Félix, médico rico e cético, apaixona-se pela viúva Lívia, mas não consegue confiar no amor. Movido pelo ciúme e por insinuações, rompe o noivado às vésperas do casamento. Um estudo da dúvida que destrói a felicidade.",
+    "trecho": "Naquele dia, — já lá vão dez anos! — o Dr. Félix levantou-se tarde, abriu a janela e cumprimentou o sol. O dia estava esplêndido; uma fresca bafagem do mar vinha quebrar um pouco os ardores do estio; algumas raras nuvenzinhas brancas, finas e transparentes se destacavam no azul do céu. Chilreavam na chácara vizinha à casa do doutor algumas aves afeitas à vida semi-urbana, semi-silvestre que lhes pode oferecer uma chácara nas Laranjeiras. Parecia que toda a natureza colaborava na inauguração do ano. Aqueles para quem a idade já desfez o viço dos primeiros tempos, não se terão esquecido do fervor com que esse dia é saudado na meninice e na adolescência. […]"
+  },
+  {
+    "id": "marm02",
+    "titulo": "A Mão e a Luva",
+    "ano": 1874,
+    "data": "1874",
+    "fase": "romântica",
+    "palavras": 34626,
+    "alfa": 1.028,
+    "resumo": "Guiomar, afilhada de uma baronesa, tem três pretendentes: o sentimental Estêvão, o acomodado Jorge e o ambicioso advogado Luís Alves. Ela escolhe Luís Alves, cuja ambição combina com a dela \"como a mão na luva\".",
+    "trecho": "— Mas o que pretendes fazer agora?\n\n— Morrer.\n\n— Morrer? Que idéia! Deixa-te disso, Estevão. Não se morre por tão pouco...\n\n— Morre-se. Quem não padece estas dores não as pode avaliar. O golpe foi profundo, e o meu coração é pusilânime; por mais aborrecível que pareça a idéia da morte, pior, muito pior do que ela, é a de viver. Ah! tu não sabes o que isto é?\n\n— Sei: um namoro gorado..."
+  },
+  {
+    "id": "marm03",
+    "titulo": "Helena",
+    "ano": 1876,
+    "data": "1876",
+    "fase": "romântica",
+    "palavras": 55277,
+    "alfa": 1.006,
+    "resumo": "Em testamento, o conselheiro Vale reconhece Helena como filha, e ela passa a viver com o meio-irmão Estácio. Os dois se apaixonam. O segredo de que Helena não é filha do conselheiro vem à tona e leva a um desfecho trágico.",
+    "trecho": "O Conselheiro Vale morreu às 7 horas da noite de 25 de abril de 1859. Morreu de apoplexia fulminante, pouco depois de cochilar a sesta, — segundo costumava dizer, — e quando se preparava a ir jogar a usual partida de voltarete em casa de um desembargador, seu amigo. O Dr. Camargo, chamado à pressa, nem chegou a tempo de empregar os recursos da ciência; o Padre Melchior não pôde dar-lhe as consolações da religião: a morte fora instantânea."
+  },
+  {
+    "id": "marm04",
+    "titulo": "Iaiá Garcia",
+    "ano": 1878,
+    "data": "1878",
+    "fase": "romântica",
+    "palavras": 55678,
+    "alfa": 1.028,
+    "resumo": "Para afastar o filho Jorge da jovem Estela, a mãe o manda para a Guerra do Paraguai. Estela se casa com Luís Garcia, pai de Iaiá. Na volta de Jorge, Iaiá e ele acabam se casando, e Estela renuncia ao próprio sentimento.",
+    "trecho": "Luís Garcia transpunha a soleira da porta, para sair, quando apareceu um criado e lhe entregou esta carta:\n\n\"5 de outubro de 1866. Sr. Luís Garcia — Peço-lhe o favor de vir falar-me hoje, de uma a duas horas da tarde. Preciso de seus conselhos, e talvez de seus obséquios. — VALÉRIA.\"\n\n— Diga que irei. A senhora está cá no morro?\n\n— Não, senhor, está na Rua dos Inválidos.\n\nLuís Garcia era funcionário público. Desde 1860 elegera no lugar menos povoado de Santa Teresa uma habitação modesta, onde se meteu a si e a sua viuvez. Não era frade, mas queria como eles a solidão e o sossego. A solidão não era absoluta, nem o sossego ininterrompido; mas eram sempre maiores e mais certos que cá embaixo. […]"
+  },
+  {
+    "id": "marm05",
+    "titulo": "Memórias Póstumas de Brás Cubas",
+    "ano": 1880,
+    "data": "1880 em folhetim; livro em 1881",
+    "fase": "realista",
+    "palavras": 59702,
+    "alfa": 1.004,
+    "resumo": "Um \"defunto autor\" narra sua vida de rico ocioso: o romance com Marcela, o adultério com Virgília, o projeto do emplasto e a filosofia do Humanitismo de Quincas Borba. Tom irônico e fragmentado; marca a virada do realismo no Brasil.",
+    "trecho": "Algum tempo hesitei se devia abrir estas memórias pelo princípio ou pelo fim, isto é, se poria em primeiro lugar o meu nascimento ou a minha morte. Suposto o uso vulgar seja começar pelo nascimento, duas considerações me levaram a adotar diferente método: a primeira é que eu não sou propriamente um autor defunto, mas um defunto autor, para quem a campa foi outro berço; a segunda é que o escrito ficaria assim mais galante e mais novo. Moisés, que também contou a sua morte, não a pôs no intróito, mas no cabo: diferença radical entre este livro e o Pentateuco."
+  },
+  {
+    "id": "marm06",
+    "titulo": "Casa Velha",
+    "ano": 1885,
+    "data": "1885 a 1886 em folhetim; livro em 1944",
+    "fase": "realista",
+    "palavras": 21853,
+    "alfa": 1.017,
+    "resumo": "O romance mais curto do corpus. Um padre pesquisa a biblioteca de uma casa antiga e acompanha o amor entre Félix, filho da dona da casa, e Lalau, moça agregada à família. Para impedir a união, a mãe insinua que os dois seriam irmãos.",
+    "trecho": "Aqui está o que contava, há muitos anos, um velho cônego da Capela Imperial:\n\n— Não desejo ao meu maior inimigo o que me aconteceu no mês de abril de 1839. Tinha-me dado na cabeça escrever uma obra política, a história do reinado de D. Pedro I. Até então esperdiçara algum talento em décimas e sonetos, muitos artigos de periódicos, e alguns sermões, que cedia a outros, depois que reconheci que não tinha os dons indispensáveis ao púlpito. No mês de agosto de 1838 li as Memórias que outro padre, Luís Gonçalves dos Santos, o padre Perereca chamado, escreveu do tempo do rei, e foi esse livro que me meteu em brios. […]"
+  },
+  {
+    "id": "marm07",
+    "titulo": "Quincas Borba",
+    "ano": 1891,
+    "data": "1891",
+    "fase": "realista",
+    "palavras": 75480,
+    "alfa": 1.003,
+    "resumo": "Rubião, professor em Barbacena, herda a fortuna do filósofo Quincas Borba e o cão de mesmo nome. No Rio de Janeiro, é explorado pelo casal Palha e Sofia, perde tudo e enlouquece, acreditando ser Napoleão III. É daqui a frase \"Ao vencedor, as batatas\".",
+    "trecho": "Rubião fitava a enseada, — eram oito horas da manhã. Quem o visse, com os polegares metidos no cordão do chambre, à janela de uma grande casa de Botafogo, cuidaria que ele admirava aquele pedaço de água quieta; mas, em verdade, vos digo que pensava em outra coisa. Cotejava o passado com o presente. Que era, há um ano? Professor. Que é agora? Capitalista. Olha para si, para as chinelas (umas chinelas de Túnis, que lhe deu recente amigo, Cristiano Palha), para a casa, para o jardim, para a enseada, para os morros e para o céu; e tudo, desde as chinelas até o céu, tudo entra na mesma sensação de propriedade."
+  },
+  {
+    "id": "marm08",
+    "titulo": "Dom Casmurro",
+    "ano": 1899,
+    "data": "1899",
+    "fase": "realista",
+    "palavras": 65006,
+    "alfa": 1.035,
+    "resumo": "Bento Santiago narra a infância com Capitu, a passagem pelo seminário, o casamento e a suspeita de que o filho Ezequiel seja de seu amigo Escobar. A traição nunca é confirmada, e essa ambiguidade é o centro do livro.",
+    "trecho": "Uma noite destas, vindo da cidade para o Engenho Novo, encontrei no trem da Central um rapaz aqui do bairro, que eu conheço de vista e de chapéu. Cumprimentou-me, sentou-se ao pé de mim, falou da Lua e dos ministros, e acabou recitando-me versos. A viagem era curta, e os versos pode ser que não fossem inteiramente maus. Sucedeu, porém, que, como eu estava cansado, fechei os olhos três ou quatro vezes; tanto bastou para que ele interrompesse a leitura e metesse os versos no bolso."
+  },
+  {
+    "id": "marm09",
+    "titulo": "Esaú e Jacó",
+    "ano": 1904,
+    "data": "1904",
+    "fase": "realista",
+    "palavras": 71136,
+    "alfa": 0.988,
+    "resumo": "Os gêmeos Pedro e Paulo são rivais desde o ventre: um é monarquista e o outro, republicano. Ambos amam Flora, que morre sem escolher entre eles. A história se passa na transição do Império para a República e é narrada a partir dos cadernos do Conselheiro Aires.",
+    "trecho": "Era a primeira vez que as duas iam ao Morro do Castelo. Começaram de subir pelo lado da Rua do Carmo. Muita gente há no Rio de Janeiro que nunca lá foi, muita haverá morrido, muita mais nascerá e morrerá sem lá pôr os pés. Nem todos podem dizer que conhecem uma cidade inteira. Um velho inglês, que aliás andara terras e terras, confiava-me há muitos anos em Londres que de Londres só conhecia bem o seu clube, e era o que lhe bastava da metrópole e do mundo."
+  },
+  {
+    "id": "marm10",
+    "titulo": "Memorial de Aires",
+    "ano": 1908,
+    "data": "1908",
+    "fase": "realista",
+    "palavras": 50170,
+    "alfa": 0.994,
+    "resumo": "Último romance, escrito como o diário do Conselheiro Aires, diplomata aposentado, entre 1888 e 1889. Aires acompanha o amor entre a viúva Fidélia e Tristão, afilhado do casal Aguiar. Os jovens se casam e partem para Portugal, deixando os velhos Aguiar sozinhos.",
+    "trecho": "Ora bem, faz hoje um ano que voltei definitivamente da Europa. O que me lembrou esta data foi, estando a beber café, o pregão de um vendedor de vassouras e espanadores: \"Vai vassouras! vai espanadores!\" Costumo ouvi-lo outras manhãs, mas desta vez trouxe-me à memória o dia do desembarque, quando cheguei aposentado à minha terra, ao meu Catete, à minha língua. Era o mesmo que ouvi há um ano, em 1887, e talvez fosse a mesma boca."
+  }
+]

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linguagem como sistema complexo</title>
+<meta name="description" content="Previsibilidade, lei de Zipf e emergência: o que os romances de Machado de Assis mostram sobre os grandes modelos de linguagem. Seminário da disciplina SCX 5002 · Sistemas Complexos I (USP EACH).">
+<meta property="og:title" content="Linguagem como sistema complexo">
+<meta property="og:description" content="Entropia, lei de Zipf e emergência medidas nos dez romances de Machado de Assis.">
+<meta property="og:image" content="prints/slide-01-cover.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' rx='5' fill='%23f5b301'/%3E%3Cpath d='M2 30 30 2' stroke='%231a1a18' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Início"><span class="marca-quadro"></span>SCX 5002</a>
+  <nav aria-label="Seções">
+    <a href="#pergunta">Pergunta</a>
+    <a href="#corpus">Corpus</a>
+    <a href="#previsibilidade">Previsibilidade</a>
+    <a href="#zipf">Zipf</a>
+    <a href="#emergencia">Emergência</a>
+    <a href="#romances">Romances</a>
+    <a href="#conclusao">Conclusão</a>
+  </nav>
+  <a class="topo-gh" href="https://github.com/herculesprof/usp-scx5002-projeto" target="_blank" rel="noopener">GitHub ↗</a>
+</header>
+
+<main>
+
+<!-- CAPA ---------------------------------------------------------------- -->
+<section class="capa" id="inicio">
+  <div class="capa-deco" aria-hidden="true">
+    <div class="capa-quadro"></div>
+    <div class="capa-linha"></div>
+  </div>
+  <img class="capa-logo" src="assets/usp-logo.png" alt="Logo da USP">
+  <div class="capa-texto">
+    <p class="rotulo">SCX 5002 · Sistemas Complexos I · USP EACH</p>
+    <h1>Linguagem como sistema complexo</h1>
+    <p class="capa-sub">Previsibilidade, lei de Zipf e emergência: o que os romances de Machado de Assis mostram sobre os grandes modelos de linguagem</p>
+    <div class="capa-acoes">
+      <a class="botao botao-cheio" href="#pergunta">Explorar o projeto ↓</a>
+      <a class="botao" href="apresentacao.pdf" target="_blank" rel="noopener">Slides em PDF</a>
+      <a class="botao" href="https://github.com/herculesprof/usp-scx5002-projeto/blob/main/docs/artigo.md" target="_blank" rel="noopener">Ler o artigo</a>
+    </div>
+  </div>
+  <div class="capa-autor">
+    <p class="capa-nome">Hercules Ramos</p>
+    <p class="mudo">Seminário · EACH, Escola de Artes, Ciências e Humanidades</p>
+  </div>
+</section>
+
+<!-- PERGUNTA ------------------------------------------------------------- -->
+<section class="secao" id="pergunta">
+  <p class="rotulo">Abertura · a pergunta</p>
+  <h2>Quando um modelo de linguagem parece ganhar uma habilidade <em>de repente</em>, isso é uma transição de fase ou um efeito da métrica?</h2>
+  <div class="grade-2">
+    <div class="cartao">
+      <h3>Linguagem como sistema complexo adaptativo</h3>
+      <p>Muitos falantes interagem sem coordenação central, e a estrutura da língua emerge do uso e volta a moldar o uso futuro (Beckner et al., 2009). Os grandes modelos de linguagem (LLMs) aprendem essa estrutura prevendo o próximo símbolo.</p>
+    </div>
+    <div class="cartao cartao-escuro">
+      <h3>O que se compara</h3>
+      <p>Linguagem humana e modelos são comparados só por <strong>grandezas observáveis no texto</strong>: frequências, incerteza de previsão e curvas de desempenho. Uma semelhança nessas grandezas não implica mecanismos iguais.</p>
+    </div>
+  </div>
+  <div class="ideias">
+    <a class="ideia" href="#previsibilidade"><span class="ideia-n">1</span><span><strong>Previsibilidade</strong>Quanto do próximo caractere o contexto já determina?</span></a>
+    <a class="ideia" href="#zipf"><span class="ideia-n">2</span><span><strong>Lei de Zipf</strong>Qual o expoente, com que incerteza, e o que ele prova?</span></a>
+    <a class="ideia" href="#emergencia"><span class="ideia-n">3</span><span><strong>Emergência</strong>O salto aparece no parâmetro de ordem ou só na métrica?</span></a>
+  </div>
+</section>
+
+<!-- CORPUS --------------------------------------------------------------- -->
+<section class="secao secao-creme" id="corpus">
+  <p class="rotulo">Os dados</p>
+  <h2>Dez romances de Machado de Assis</h2>
+  <p class="lead">De <em>Ressurreição</em> (1872) a <em>Memorial de Aires</em> (1908), na <em>Obra Completa</em> (Nova Aguilar, 1994), em domínio público e distribuídos pelo NLTK.</p>
+  <div class="numeros">
+    <div class="numero"><span class="numero-v">525.067</span><span class="numero-r">palavras</span></div>
+    <div class="numero"><span class="numero-v">31.243</span><span class="numero-r">palavras distintas</span></div>
+    <div class="numero"><span class="numero-v">46,9%</span><span class="numero-r">do vocabulário aparece uma só vez</span></div>
+    <div class="numero"><span class="numero-v">2,9 mi</span><span class="numero-r">caracteres em 27 símbolos</span></div>
+  </div>
+  <div class="painel">
+    <div class="painel-cab">
+      <h3>Palavras por romance</h3>
+      <p class="mudo">Clique numa barra para abrir o romance. <span class="legenda-inline"><i class="ponto ponto-amarelo"></i>fase romântica <i class="ponto ponto-azul"></i>fase realista</span></p>
+    </div>
+    <div id="grafico-corpus" class="grafico-barras" role="list"></div>
+  </div>
+  <details class="detalhe">
+    <summary>Como o texto foi preparado</summary>
+    <ol class="passos">
+      <li><strong>Leitura</strong> em Windows-1252, a codificação original, preservando acentos.</li>
+      <li><strong>Cabeçalho editorial</strong> removido (título, “Texto-fonte”, “Publicado originalmente”).</li>
+      <li><strong>728 linhas “CAPÍTULO …”</strong> e a marca “FIM” removidas; prefácios do autor mantidos.</li>
+      <li><strong>Palavras:</strong> minúsculas, letras com acento e hífen interno (“diga-me” conta como uma).</li>
+      <li><strong>Caracteres:</strong> sem acentos, alfabeto de 27 símbolos (26 letras e espaço), como em Shannon (1951).</li>
+      <li><strong>Validação cruzada:</strong> treino em 9 romances e teste no 10º, repetido 10 vezes.</li>
+    </ol>
+  </details>
+</section>
+
+<!-- IDEIA 1 -------------------------------------------------------------- -->
+<section class="secao" id="previsibilidade">
+  <p class="rotulo">Ideia 1 · Previsibilidade</p>
+  <h2>Quantas perguntas para adivinhar a próxima letra?</h2>
+  <p class="lead">A <strong>entropia</strong> é o número médio de perguntas de sim ou não necessárias para descobrir o próximo símbolo, medido em bits. Sem informação, com 27 símbolos, são log₂ 27 ≈ 4,75. Conhecendo as letras anteriores, são bem menos. Prever o próximo símbolo é também a tarefa de treino de um LLM.</p>
+
+  <div class="painel jogo" id="jogo">
+    <div class="painel-cab">
+      <h3>Jogo: adivinhe a próxima letra</h3>
+      <p class="mudo">Trecho de <em id="jogo-fonte">Dom Casmurro</em>. Digite uma letra (ou espaço). Cada tentativa conta como uma pergunta.</p>
+    </div>
+    <p class="jogo-texto" aria-live="polite"><span id="jogo-feito"></span><span class="jogo-cursor" id="jogo-cursor">?</span><span class="jogo-resto" id="jogo-resto"></span></p>
+    <div class="jogo-controles">
+      <label class="jogo-entrada">Sua letra <input id="jogo-input" maxlength="1" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Digite a próxima letra"></label>
+      <button class="botao" id="jogo-dica" type="button">Revelar</button>
+      <button class="botao" id="jogo-novo" type="button">Outro trecho</button>
+    </div>
+    <div class="jogo-placar">
+      <div><span id="jogo-letras">0</span> letras</div>
+      <div><span id="jogo-tentativas">0</span> tentativas</div>
+      <div><span id="jogo-media">–</span> tentativas por letra</div>
+      <div class="mudo" id="jogo-tentou"></div>
+    </div>
+  </div>
+
+  <div class="painel">
+    <div class="painel-cab">
+      <h3>Entropia cruzada medida em Machado</h3>
+      <p class="mudo">Modelos de n-gramas de caracteres, treino em 9 romances e teste no 10º. Arraste para mudar o contexto.</p>
+    </div>
+    <div class="controle">
+      <label for="k-slider">Letras de contexto: <strong id="k-valor">5</strong></label>
+      <input type="range" id="k-slider" min="0" max="8" value="5" step="1">
+    </div>
+    <div class="duas-colunas">
+      <div id="grafico-entropia" class="grafico"></div>
+      <div class="leitura">
+        <div class="numero numero-grande"><span class="numero-v" id="k-bits">1,93</span><span class="numero-r">bit por caractere</span></div>
+        <div class="medidor" aria-hidden="true"><div class="medidor-barra" id="k-medidor"></div></div>
+        <p id="k-texto"></p>
+        <p class="mudo pequeno" id="k-faixa"></p>
+      </div>
+    </div>
+  </div>
+  <p class="nota">A partir de 6 letras a medida volta a subir: os contextos longos ficam raros demais em 2,6 milhões de caracteres de treino, e o modelo passa a decorar. O valor de 1,93 é limitado pelo corpus e pelo tipo de modelo, não pela língua.</p>
+</section>
+
+<!-- IDEIA 2 -------------------------------------------------------------- -->
+<section class="secao secao-creme" id="zipf">
+  <p class="rotulo">Ideia 2 · Lei de Zipf</p>
+  <h2>A mesma inclinação, mecanismos muito diferentes</h2>
+  <p class="lead">Ordenando as palavras da mais para a menos frequente, a frequência cai aproximadamente como <span class="formula">1 / posto<sup>α</sup></span>. Em escala log-log, isso é uma reta de inclinação −α.</p>
+
+  <div class="painel">
+    <div class="painel-cab">
+      <h3>Frequência por posto (escala log-log)</h3>
+      <p class="mudo">Ligue e desligue os textos. Passe o mouse sobre os pontos de Machado para ver a palavra.</p>
+    </div>
+    <div class="alternar" role="group" aria-label="Textos no gráfico">
+      <button class="chip ativo" data-serie="machado27" type="button"><i class="ponto ponto-azul"></i>Machado de Assis · α = 1,04</button>
+      <button class="chip ativo" data-serie="ngrama4" type="button"><i class="ponto ponto-preto"></i>Texto gerado por n-gramas · α = 1,07</button>
+      <button class="chip ativo" data-serie="aleatorio" type="button"><i class="ponto ponto-cinza"></i>Digitação aleatória · α = 1,05</button>
+    </div>
+    <div id="grafico-zipf" class="grafico grafico-alto"></div>
+    <div class="dica" id="zipf-dica" hidden></div>
+  </div>
+
+  <div class="grade-2">
+    <div class="painel">
+      <div class="painel-cab"><h3>O expoente depende do método</h3><p class="mudo">Clique numa linha para comparar.</p></div>
+      <div id="tabela-alfa" class="escala-alfa"></div>
+      <p class="pequeno mudo">Incerteza estatística pequena (±0,02), incerteza de método grande (0,97 a 1,14). Resumo honesto: <strong>α = 1,0 ± 0,1</strong>.</p>
+    </div>
+    <div class="painel">
+      <div class="painel-cab"><h3>Amostra do texto gerado por n-gramas</h3><p class="mudo">Cada letra sorteada pelas 4 anteriores, com as contagens de Machado.</p></div>
+      <blockquote class="amostra" id="amostra-ngrama"></blockquote>
+      <p class="pequeno"><strong id="pct-inexistentes">79,4%</strong> das “palavras” diferentes que ele produz não existem no corpus, e mesmo assim a curva quase se sobrepõe à de Machado.</p>
+    </div>
+  </div>
+  <div class="destaque">
+    <span class="destaque-rotulo">Conclusão</span>
+    <p>α ≈ 1, sozinho, <strong>não identifica o mecanismo</strong> que gerou o texto e <strong>não é evidência de criticalidade</strong>. Palavras curtas surgem mais ao acaso (Miller, 1957; Piantadosi, 2014).</p>
+  </div>
+</section>
+
+<!-- IDEIA 3 -------------------------------------------------------------- -->
+<section class="secao" id="emergencia">
+  <p class="rotulo">Ideia 3 · Emergência</p>
+  <h2>O salto está no sistema ou na régua?</h2>
+  <p class="lead">Wei et al. (2022) chamam de emergente uma habilidade ausente nos modelos menores e presente nos maiores. Schaeffer, Miranda e Koyejo (2023) notam que isso aparece sobretudo em métricas de tudo ou nada: se cada símbolo sai certo com probabilidade φ, uma resposta de L símbolos sai inteira certa com probabilidade ≈ φ<sup>L</sup>.</p>
+
+  <div class="tabela-ising">
+    <div class="ising-cab"><span>Elemento</span><span>Neste trabalho</span><span>No modelo de Ising</span></div>
+    <div><span>Sistema</span><span>Modelos de n-gramas de caracteres (contexto de 0 a 8 letras)</span><span>Ímãs numa rede</span></div>
+    <div><span>Variável de controle</span><span>Número de parâmetros, de 27 a 2,7 milhões</span><span>Temperatura</span></div>
+    <div><span>Parâmetro de ordem φ</span><span>Fração das letras de teste que o modelo acerta</span><span>Magnetização</span></div>
+    <div><span>Métrica de tarefa</span><span>Acerto exato de L letras seguidas, ≈ φ<sup>L</sup></span><span>Função não linear da magnetização</span></div>
+  </div>
+
+  <div class="painel">
+    <div class="painel-cab">
+      <h3>Experimento: parâmetro de ordem contra acerto exato</h3>
+      <p class="mudo">Cada curva em % do seu valor no maior modelo. Aumente L e veja a mesma melhora suave virar um “salto”.</p>
+    </div>
+    <div class="controle">
+      <label for="l-slider">Tamanho da resposta L: <strong id="l-valor">10</strong> letras</label>
+      <input type="range" id="l-slider" min="1" max="20" value="10" step="1">
+    </div>
+    <div class="alternar" role="group" aria-label="Curvas medidas">
+      <span class="chip chip-fixo"><i class="ponto ponto-azul"></i>φ medido (acerto por letra)</span>
+      <span class="chip chip-fixo"><i class="ponto ponto-preto"></i>φᴸ previsto</span>
+      <span class="chip chip-fixo" id="chip-medido"><i class="ponto ponto-amarelo"></i>acerto exato medido (L = 1, 3, 5, 10)</span>
+    </div>
+    <div id="grafico-fase" class="grafico grafico-alto"></div>
+    <div class="leituras-fase">
+      <div><span class="mudo">φ atinge metade do valor final em</span> <strong id="meio-phi">~450</strong> <span class="mudo">parâmetros</span></div>
+      <div><span class="mudo">o acerto de L letras atinge metade em</span> <strong id="meio-l">~760 mil</strong> <span class="mudo">parâmetros</span></div>
+      <div><span class="mudo">no maior modelo, φᴸ =</span> <strong id="phi-l-final">0,56%</strong></div>
+    </div>
+  </div>
+
+  <div class="grade-2">
+    <div class="destaque destaque-claro">
+      <span class="destaque-rotulo">Critério de transição</span>
+      <p>Haveria transição se o próprio φ mudasse de repente num tamanho crítico, com a suscetibilidade dφ/d(log tamanho) crescendo sem limite ali.</p>
+    </div>
+    <div class="destaque">
+      <span class="destaque-rotulo">O que se observa</span>
+      <p>A suscetibilidade tem um máximo largo (0,12 por década, perto de 50 mil parâmetros) e cai para 0,004. Sem divergência: é um <strong>crossover</strong>, não uma transição de fase.</p>
+    </div>
+  </div>
+  <p class="nota">Um modelo de n-gramas não é um LLM, então o experimento não prova que toda emergência é ilusória. Ele estabelece um procedimento: para afirmar transição de fase num LLM, é preciso exibi-la num parâmetro de ordem contínuo, e não só numa métrica de acerto exato.</p>
+</section>
+
+<!-- ROMANCES ------------------------------------------------------------- -->
+<section class="secao secao-creme" id="romances">
+  <p class="rotulo">O corpus, um a um</p>
+  <h2>Os romances e suas primeiras linhas</h2>
+  <p class="lead">Cada capa abre o trecho de abertura do romance (texto em domínio público, como está no corpus), o resumo e as medidas de cada livro.</p>
+  <div class="alternar" role="group" aria-label="Filtrar por fase">
+    <button class="chip ativo" data-fase="todas" type="button">Todos</button>
+    <button class="chip" data-fase="romântica" type="button"><i class="ponto ponto-amarelo"></i>Fase romântica</button>
+    <button class="chip" data-fase="realista" type="button"><i class="ponto ponto-azul"></i>Fase realista</button>
+  </div>
+  <div class="estante" id="estante"></div>
+  <p class="pequeno mudo">Capas ilustrativas, criadas para este site no estilo da apresentação; não reproduzem as edições originais.</p>
+</section>
+
+<!-- CONCLUSÃO ------------------------------------------------------------ -->
+<section class="secao secao-escura" id="conclusao">
+  <p class="rotulo rotulo-amarelo">Conclusão</p>
+  <h2>Três respostas para uma pergunta</h2>
+  <div class="conclusoes">
+    <div><span class="conc-n">1,93</span><p><strong>bit por caractere</strong> com 5 letras de contexto, contra 4,75 sem informação: redundância de pelo menos 59%.</p></div>
+    <div><span class="conc-n">α ≈ 1</span><p>em Machado, mas também numa digitação aleatória: <strong>o expoente não revela mecanismo</strong> nem criticalidade.</p></div>
+    <div><span class="conc-n">φ</span><p>cresce suave; o “salto” aparece só no acerto exato. <strong>A emergência deve ser testada num parâmetro de ordem contínuo.</strong></p></div>
+  </div>
+  <div class="materiais">
+    <a href="apresentacao.pdf" target="_blank" rel="noopener"><strong>Slides</strong><span>PDF, 18 páginas</span></a>
+    <a href="https://github.com/herculesprof/usp-scx5002-projeto/blob/main/docs/artigo.md" target="_blank" rel="noopener"><strong>Artigo</strong><span>texto completo com referências</span></a>
+    <a href="https://github.com/herculesprof/usp-scx5002-projeto/blob/main/docs/roteiro.md" target="_blank" rel="noopener"><strong>Roteiro</strong><span>fala de 18 minutos</span></a>
+    <a href="https://github.com/herculesprof/usp-scx5002-projeto" target="_blank" rel="noopener"><strong>Código</strong><span>Python + NumPy, reproduzível</span></a>
+  </div>
+  <details class="detalhe detalhe-escuro">
+    <summary>Referências principais</summary>
+    <ul class="refs">
+      <li>Beckner et al. (Five Graces Group). Language is a complex adaptive system. <em>Language Learning</em> 59, 2009.</li>
+      <li>Shannon, C. E. Prediction and entropy of printed English. <em>Bell System Technical Journal</em> 30, 1951.</li>
+      <li>Piantadosi, S. T. Zipf's word frequency law in natural language. <em>Psychonomic Bulletin &amp; Review</em> 21, 2014.</li>
+      <li>Clauset, Shalizi e Newman. Power-law distributions in empirical data. <em>SIAM Review</em> 51, 2009.</li>
+      <li>Wei et al. Emergent abilities of large language models. <em>TMLR</em>, 2022.</li>
+      <li>Schaeffer, Miranda e Koyejo. Are emergent abilities of large language models a mirage? <em>NeurIPS</em>, 2023.</li>
+      <li>Solé, R. V. <em>Phase Transitions</em>. Princeton University Press, 2011.</li>
+    </ul>
+  </details>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <p><strong>Hercules Ramos</strong> · aluno especial, USP EACH · <a href="https://linkedin.com/in/hercules-ramos" target="_blank" rel="noopener">LinkedIn</a></p>
+  <p class="mudo">Textos de Machado de Assis (1839–1908) em domínio público, corpus “machado” do NLTK. Números calculados em <code>results/resultados.json</code>.</p>
+</footer>
+
+<dialog class="modal" id="modal" aria-labelledby="modal-titulo">
+  <button class="modal-fechar" id="modal-fechar" type="button" aria-label="Fechar">×</button>
+  <div class="modal-corpo">
+    <div class="modal-capa" id="modal-capa"></div>
+    <div class="modal-texto">
+      <p class="rotulo" id="modal-rotulo"></p>
+      <h3 id="modal-titulo"></h3>
+      <blockquote class="trecho" id="modal-trecho"></blockquote>
+      <p id="modal-resumo"></p>
+      <div class="modal-numeros" id="modal-numeros"></div>
+      <div class="modal-nav">
+        <button class="botao" id="modal-ant" type="button">← Anterior</button>
+        <button class="botao" id="modal-prox" type="button">Próximo →</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

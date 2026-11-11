@@ -10,3 +10,6 @@ venv/
 # sistema
 .DS_Store
 Thumbs.db
+
+# site montado (src/montar_site.py)
+_site/
