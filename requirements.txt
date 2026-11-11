@@ -1,0 +1,4 @@
+numpy>=1.24
+matplotlib>=3.7
+# opcional, só para exportar a apresentação em PDF e gerar os prints (src/gerar_prints.py):
+# playwright>=1.40

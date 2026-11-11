@@ -1,0 +1,677 @@
+<!doctype html><html lang='pt-BR'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Linguagem como Sistema Complexo</title><style>
+@font-face { font-family: "Space Grotesk"; src: url(assets/fonts/space-grotesk-latin-wght-normal.woff2) format("woff2"); font-weight: 300 700; }
+@font-face { font-family: "Inter"; src: url(assets/fonts/inter-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; }
+* { box-sizing: border-box; margin: 0; }
+html, body { background: #2b2b28; }
+body { font-family: Inter, Arial, sans-serif; color: #1a1a18; }
+.palco { width: 1920px; height: 1080px; overflow: hidden; margin: 0 auto 40px; transform-origin: top left; }
+section { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+section > aside { display: none; }
+h1, h2, h3, p { font-weight: inherit; }
+h1 { font-size: 96px; font-weight: 600; line-height: 1.1; }
+h2 { font-size: 64px; font-weight: 600; line-height: 1.15; }
+h3 { font-size: 44px; font-weight: 600; line-height: 1.2; }
+p { font-size: 32px; line-height: 1.4; }
+ul, ol { padding-left: 1.2em; }
+li { margin: 0.15em 0; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #d6d3ca; padding: 0.35em 0.6em; text-align: left; vertical-align: top; }
+th { font-weight: 600; }
+hr { border: none; height: 0; }
+x-shape { display: block; }
+x-shape[kind="arrow-right"] { clip-path: polygon(0 30%, 60% 30%, 60% 0, 100% 50%, 60% 100%, 60% 70%, 0 70%); }
+x-shape[kind="line"] { height: 0 !important; background: none; border-left: none !important; border-right: none !important; border-bottom: none !important; }
+.notas { width: 1920px; margin: -24px auto 60px; padding: 24px 32px; background: #f6f5f1; font-size: 22px; line-height: 1.5; border-radius: 8px; }
+body.sem-notas .notas { display: none; }
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { background: none; }
+  .palco { margin: 0; transform: none !important; page-break-after: always; }
+  .notas { display: none; }
+}
+</style><script>
+function ajustar() {
+  const w = window.innerWidth - 32;
+  const s = Math.min(1, w / 1920);
+  document.querySelectorAll('.palco').forEach(p => {
+    p.style.transform = 'scale(' + s + ')';
+    p.style.marginBottom = (40 - 1080 * (1 - s)) + 'px';
+  });
+  document.querySelectorAll('.notas').forEach(n => { n.style.width = (1920 * s) + 'px'; });
+}
+window.addEventListener('resize', ajustar);
+window.addEventListener('load', ajustar);
+</script></head><body><div class="palco"><section id="cover" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<img src="assets/usp-logo.png" alt="Logo da USP" style="position:absolute;left:1452px;top:128px;width:340px;height:150px;object-fit:contain">
+<div style="position:absolute;left:1480px;top:440px;width:240px;height:240px;background:#f5b301;border-radius:24px"></div>
+<hr style="position:absolute;left:1240px;top:660px;width:600px;border-top:3px solid #1a1a18;transform:rotate(-45deg)">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">SCX 5002 · Sistemas Complexos I · USP EACH</p>
+<div style="display:flex;flex-direction:column;gap:32px;width:1240px">
+<h1 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:120px;font-weight:700;letter-spacing:-2px;line-height:1;color:#1a1a18">Linguagem como sistema complexo</h1>
+<p style="font-size:44px;line-height:1.3;color:#5b5952">Previsibilidade, lei de Zipf e emergência: o que os romances de Machado de Assis mostram sobre os grandes modelos de linguagem</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:3px solid #1a1a18;padding:24px 0px 0px 0px;width:720px">
+<p style="font-size:32px;font-weight:600">Hercules Ramos</p>
+<p style="font-size:24px;color:#1a1a18">Nº USP 18006184</p>
+<p style="font-size:24px;color:#5b5952">Seminário · EACH, Escola de Artes, Ciências e Humanidades</p>
+</div>
+<aside>Tempo: 15 segundos. Roteiro de fala: "Olá, sou Hercules Ramos, aluno especial da disciplina Sistemas Complexos I. Neste seminário trato a linguagem como um sistema complexo e uso os dez romances de Machado de Assis para discutir uma pergunta atual: quando os grandes modelos de linguagem parecem ganhar habilidades de repente, isso é uma transição de fase ou um efeito da forma como medimos?"</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 1 · notas:</b> Tempo: 15 segundos. Roteiro de fala: "Olá, sou Hercules Ramos, aluno especial da disciplina Sistemas Complexos I. Neste seminário trato a linguagem como um sistema complexo e uso os dez romances de Machado de Assis para discutir uma pergunta atual: quando os grandes modelos de linguagem parecem ganhar habilidades de repente, isso é uma transição de fase ou um efeito da forma como medimos?"</div>
+<div class="palco"><section id="roteiro" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Roteiro · cerca de 19 minutos</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Uma pergunta, três ideias</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1a1a18;border-radius:24px;padding:40px 48px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#f5b301">A pergunta</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;line-height:1.25;color:#f3f2ed">O "salto" de desempenho dos grandes modelos de linguagem é uma transição de fase ou um efeito da régua?</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5">1</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2">Previsibilidade</h3>
+<p style="font-size:28px;line-height:1.35;color:#5b5952">Quanto do próximo caractere o contexto já decide?</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5">2</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2">Lei de Zipf</h3>
+<p style="font-size:28px;line-height:1.35;color:#5b5952">O que o expoente das frequências permite concluir?</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:3px solid #1a1a18;border-radius:24px;padding:38px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5">3</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2">Emergência</h3>
+<p style="font-size:28px;line-height:1.35;color:#5b5952">O salto aparece no parâmetro de ordem ou só na métrica?</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Dados próprios: os dez romances de Machado de Assis (1872 a 1908)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">2</p>
+<aside>Tempo: 30 segundos. Roteiro de fala: "A pergunta do seminário é esta: o salto de desempenho dos grandes modelos de linguagem é uma transição de fase, como a da água que vira gelo, ou é um efeito da régua que usamos para medir? Para chegar lá, vou passar por três ideias, todas medidas nos romances de Machado de Assis: a previsibilidade do texto, a lei de Zipf e, por fim, a emergência, com um parâmetro de ordem definido e medido."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 2 · notas:</b> Tempo: 30 segundos. Roteiro de fala: "A pergunta do seminário é esta: o salto de desempenho dos grandes modelos de linguagem é uma transição de fase, como a da água que vira gelo, ou é um efeito da régua que usamos para medir? Para chegar lá, vou passar por três ideias, todas medidas nos romances de Machado de Assis: a previsibilidade do texto, a lei de Zipf e, por fim, a emergência, com um parâmetro de ordem definido e medido."</div>
+<div class="palco"><section id="cas" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Abertura · A linguagem como sistema</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">A linguagem é um sistema adaptativo</h2>
+</div>
+<p style="font-size:40px;line-height:1.3;width:1500px">Ninguém decide sozinho como a língua funciona: muitos falantes interagem, sem controle central, e a estrutura nasce do uso.</p>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:40px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700">Interação</h3>
+<p style="font-size:28px;color:#5b5952">Falantes trocam enunciados</p>
+</div>
+<x-shape kind="arrow-right" style="width:80px;height:40px;background:#1a1a18"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:40px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700">Uso</h3>
+<p style="font-size:28px;color:#5b5952">Frequências e padrões se reforçam</p>
+</div>
+<x-shape kind="arrow-right" style="width:80px;height:40px;background:#1a1a18"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#f5b301;border-radius:24px;padding:40px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700">Estrutura</h3>
+<p style="font-size:28px;color:#1a1a18">Gramática emerge e volta a moldar a fala</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Fonte: Beckner et al. (Five Graces Group), Language Learning 59, supl. 1, 2009</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">3</p>
+<aside>Tempo: 1 minuto. Roteiro de fala: "Em 2009, um grupo de dez pesquisadores, entre eles John Holland, propôs tratar a linguagem como um sistema complexo adaptativo. Há muitos agentes, os falantes, que interagem sem nenhum controle central. O uso repetido reforça certas formas e certos padrões, e é desse uso que nasce a estrutura, a gramática e as convenções. Essa estrutura, por sua vez, volta a moldar a forma como falamos. É o mesmo ciclo de realimentação que vimos na auto-organização. Os grandes modelos de linguagem aprendem essa estrutura a partir de textos, e é por isso que faz sentido compará-los com a língua."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 3 · notas:</b> Tempo: 1 minuto. Roteiro de fala: "Em 2009, um grupo de dez pesquisadores, entre eles John Holland, propôs tratar a linguagem como um sistema complexo adaptativo. Há muitos agentes, os falantes, que interagem sem nenhum controle central. O uso repetido reforça certas formas e certos padrões, e é desse uso que nasce a estrutura, a gramática e as convenções. Essa estrutura, por sua vez, volta a moldar a forma como falamos. É o mesmo ciclo de realimentação que vimos na auto-organização. Os grandes modelos de linguagem aprendem essa estrutura a partir de textos, e é por isso que faz sentido compará-los com a língua."</div>
+<div class="palco"><section id="comparacao" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Abertura · O que vou comparar</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Comparar o observável, não o mecanismo</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:48px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Comparo: grandezas medidas no texto</p>
+<ul style="font-size:32px;line-height:1.4">
+<li>Quanto o contexto reduz a incerteza</li>
+<li>Como as frequências das palavras se distribuem</li>
+<li>Como o desempenho muda com o tamanho do modelo</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#ffffff;border:3px solid #1a1a18;border-radius:24px;padding:46px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5b5952">Não suponho</p>
+<ul style="font-size:32px;line-height:1.4">
+<li>Que um cérebro e uma rede neural funcionem do mesmo jeito</li>
+<li>Que estatísticas parecidas tenham a mesma causa</li>
+</ul>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;background:#f5b301;border-radius:12px;padding:24px 32px">Estatísticas iguais podem vir de mecanismos diferentes: a Ideia 2 mostra um exemplo.</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">4</p>
+<aside>Tempo: 45 segundos. Roteiro de fala: "Uma precaução antes dos dados. Quando eu comparar a linguagem humana com os modelos de linguagem, vou comparar só o que dá para medir no texto: quanto o contexto reduz a incerteza, como as frequências das palavras se distribuem e como o desempenho muda quando o modelo cresce. Não vou supor que um cérebro e uma rede neural funcionem do mesmo jeito, nem que estatísticas parecidas tenham a mesma causa. Na segunda ideia vamos ver um exemplo concreto disso."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 4 · notas:</b> Tempo: 45 segundos. Roteiro de fala: "Uma precaução antes dos dados. Quando eu comparar a linguagem humana com os modelos de linguagem, vou comparar só o que dá para medir no texto: quanto o contexto reduz a incerteza, como as frequências das palavras se distribuem e como o desempenho muda quando o modelo cresce. Não vou supor que um cérebro e uma rede neural funcionem do mesmo jeito, nem que estatísticas parecidas tenham a mesma causa. Na segunda ideia vamos ver um exemplo concreto disso."</div>
+<div class="palco"><section id="corpus" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Abertura · Os dados</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Do arquivo ao dado: o pré-processamento</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:3px solid #1a1a18;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">1</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Ler os 10 romances na codificação original (Latin-1), com acentos</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">2</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Retirar cabeçalhos editoriais, 728 títulos de capítulo e a marca "FIM"</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">3</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Palavras: minúsculas, letras com acento; "diga-me" conta como uma; sem números nem pontuação</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">4</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Caracteres: sem acentos, 26 letras e o espaço, 27 símbolos como em Shannon</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;border-bottom:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">5</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Validação: treinar em 9 romances e testar no 10º, repetindo 10 vezes</p>
+</div>
+</div>
+<div style="width:520px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:28px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;letter-spacing:-1px">525.067</p>
+<p style="font-size:26px;color:#5b5952">palavras, 31.243 distintas</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:28px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;letter-spacing:-1px">2,9 milhões</p>
+<p style="font-size:26px;color:#5b5952">de caracteres (27 símbolos)</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:28px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;letter-spacing:-1px">1872 a 1908</p>
+<p style="font-size:26px;color:#5b5952">de Ressurreição a Memorial de Aires</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Machado de Assis, Obra Completa, Nova Aguilar, 1994 · corpus machado do NLTK · processamento próprio em Python</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">5</p>
+<aside>Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Os dados são os dez romances de Machado de Assis, de Ressurreição, de 1872, a Memorial de Aires, de 1908, em domínio público. Antes de medir qualquer coisa, preparei o texto em cinco passos. Primeiro, li os arquivos na codificação original, para não perder os acentos. Segundo, tirei o que não é texto do autor: os cabeçalhos da editora, 728 títulos de capítulo e a palavra FIM no final de cada livro. Os prefácios escritos pelo próprio Machado ficaram. Terceiro, para contar palavras: tudo em minúsculas, palavra é uma sequência de letras, e formas como 'diga-me' contam como uma palavra só. Quarto, para medir caracteres: tirei os acentos e fiquei com 27 símbolos, as 26 letras e o espaço, como Shannon fez em 1951. Quinto, para medir previsibilidade de forma justa, os modelos são treinados em nove romances e testados no décimo, que eles nunca viram, e isso se repete dez vezes. Essas escolhas mexem um pouco nos números, por exemplo, tirar acentos reduz a entropia; elas estão descritas no artigo."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 5 · notas:</b> Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Os dados são os dez romances de Machado de Assis, de Ressurreição, de 1872, a Memorial de Aires, de 1908, em domínio público. Antes de medir qualquer coisa, preparei o texto em cinco passos. Primeiro, li os arquivos na codificação original, para não perder os acentos. Segundo, tirei o que não é texto do autor: os cabeçalhos da editora, 728 títulos de capítulo e a palavra FIM no final de cada livro. Os prefácios escritos pelo próprio Machado ficaram. Terceiro, para contar palavras: tudo em minúsculas, palavra é uma sequência de letras, e formas como 'diga-me' contam como uma palavra só. Quarto, para medir caracteres: tirei os acentos e fiquei com 27 símbolos, as 26 letras e o espaço, como Shannon fez em 1951. Quinto, para medir previsibilidade de forma justa, os modelos são treinados em nove romances e testados no décimo, que eles nunca viram, e isso se repete dez vezes. Essas escolhas mexem um pouco nos números, por exemplo, tirar acentos reduz a entropia; elas estão descritas no artigo."</div>
+<div class="palco"><section id="info" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 1 · Previsibilidade</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Entropia como jogo de sim ou não</h2>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:48px">
+<p style="font-size:36px;line-height:1.35;width:900px">Alguém esconde a próxima letra de um texto. Quantas perguntas de sim ou não você precisa, em média, para descobri-la? Esse número é a entropia, medida em bits.</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:3px solid #1a1a18;border-radius:24px;padding:36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5b5952">Exemplo</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700">pens_</p>
+<p style="font-size:28px;line-height:1.35">Depois de "pens", a próxima letra é quase sempre "a": quase nenhuma pergunta.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;letter-spacing:-1px">4,75</p>
+<p style="font-size:28px;line-height:1.35">sem saber nada: 27 símbolos igualmente prováveis</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;letter-spacing:-1px">3,93</p>
+<p style="font-size:28px;line-height:1.35">sabendo só quais letras são mais comuns em Machado</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#f5b301;border-radius:24px;padding:32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;letter-spacing:-1px">?</p>
+<p style="font-size:28px;line-height:1.35">sabendo também as letras anteriores: próximo slide</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">1 bit = uma pergunta de sim ou não bem escolhida · base: Shannon (1951) e Unidade 4 (Informação)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">6</p>
+<aside>Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Primeira ideia: previsibilidade. Imagine um jogo. Alguém esconde a próxima letra de um texto e você tenta descobrir com perguntas de sim ou não: é uma vogal? vem antes do m? A entropia é o número médio de perguntas que você precisa, e a unidade é o bit. Se você não sabe nada, e os 27 símbolos são igualmente prováveis, precisa de cerca de 4,75 perguntas. Se você sabe que o espaço e a letra a são comuns e o z é raro, já precisa de menos: em Machado, 3,93. E se você conhece as letras anteriores, precisa de bem menos. Depois de 'pens', a próxima letra é quase sempre 'a'. A diferença entre o máximo e o valor real se chama redundância: é a parte do texto que a estrutura da língua já decidiu."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 6 · notas:</b> Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Primeira ideia: previsibilidade. Imagine um jogo. Alguém esconde a próxima letra de um texto e você tenta descobrir com perguntas de sim ou não: é uma vogal? vem antes do m? A entropia é o número médio de perguntas que você precisa, e a unidade é o bit. Se você não sabe nada, e os 27 símbolos são igualmente prováveis, precisa de cerca de 4,75 perguntas. Se você sabe que o espaço e a letra a são comuns e o z é raro, já precisa de menos: em Machado, 3,93. E se você conhece as letras anteriores, precisa de bem menos. Depois de 'pens', a próxima letra é quase sempre 'a'. A diferença entre o máximo e o valor real se chama redundância: é a parte do texto que a estrutura da língua já decidiu."</div>
+<div class="palco"><section id="entropia" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 1 · Previsibilidade · dados próprios</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Com 5 letras de contexto: 1,93 bit</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="position:relative;width:1000px;height:600px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px">
+<svg aria-label="Entropia por caractere no romance de teste cai de 3,93 bits sem contexto para 1,93 bit com 5 letras de contexto e depois sobe um pouco" width="1000" height="600" viewBox="0 0 1000 600" style="position:absolute;left:0px;top:0px;width:1000px;height:600px">
+<line x1="100" y1="60" x2="950" y2="60" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="100" y1="148" x2="950" y2="148" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="100" y1="236" x2="950" y2="236" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="100" y1="324" x2="950" y2="324" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="100" y1="412" x2="950" y2="412" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="100" y1="500" x2="950" y2="500" stroke="#8a877e" stroke-width="2"/>
+<line x1="100" y1="81.6" x2="950" y2="81.6" stroke="#8a877e" stroke-width="2.5" stroke-dasharray="10 8"/>
+<line x1="100" y1="412" x2="950" y2="412" stroke="#8a877e" stroke-width="2.5" stroke-dasharray="10 8"/>
+<polyline points="110,154.2 213.75,222.8 317.5,261.6 421.25,297.3 525,321 628.75,329.8 732.5,328.7 836.25,321.4 940,311.2" fill="none" stroke="#a8a59c" stroke-width="4"/>
+<line x1="110" y1="155.2" x2="110" y2="153" stroke="#5b5952" stroke-width="3"/>
+<line x1="213.75" y1="225.6" x2="213.75" y2="220.9" stroke="#5b5952" stroke-width="3"/>
+<line x1="317.5" y1="266.3" x2="317.5" y2="257.6" stroke="#5b5952" stroke-width="3"/>
+<line x1="421.25" y1="302.4" x2="421.25" y2="291.4" stroke="#5b5952" stroke-width="3"/>
+<line x1="525" y1="326.2" x2="525" y2="314.3" stroke="#5b5952" stroke-width="3"/>
+<line x1="628.75" y1="336.1" x2="628.75" y2="322.8" stroke="#5b5952" stroke-width="3"/>
+<line x1="732.5" y1="336.9" x2="732.5" y2="320.5" stroke="#5b5952" stroke-width="3"/>
+<line x1="836.25" y1="331.4" x2="836.25" y2="312.1" stroke="#5b5952" stroke-width="3"/>
+<line x1="940" y1="322.6" x2="940" y2="301.1" stroke="#5b5952" stroke-width="3"/>
+<circle cx="110" cy="154.2" r="8" fill="#5b5952"/>
+<circle cx="213.75" cy="222.8" r="8" fill="#5b5952"/>
+<circle cx="317.5" cy="261.6" r="8" fill="#5b5952"/>
+<circle cx="421.25" cy="297.3" r="8" fill="#5b5952"/>
+<circle cx="525" cy="321" r="8" fill="#5b5952"/>
+<circle cx="628.75" cy="329.8" r="13" fill="#0b5fa5"/>
+<circle cx="732.5" cy="328.7" r="8" fill="#5b5952"/>
+<circle cx="836.25" cy="321.4" r="8" fill="#5b5952"/>
+<circle cx="940" cy="311.2" r="8" fill="#5b5952"/>
+</svg>
+<p style="position:absolute;left:0px;top:43px;width:85px;font-size:24px;color:#5b5952;text-align:right">5</p>
+<p style="position:absolute;left:0px;top:131px;width:85px;font-size:24px;color:#5b5952;text-align:right">4</p>
+<p style="position:absolute;left:0px;top:219px;width:85px;font-size:24px;color:#5b5952;text-align:right">3</p>
+<p style="position:absolute;left:0px;top:307px;width:85px;font-size:24px;color:#5b5952;text-align:right">2</p>
+<p style="position:absolute;left:0px;top:395px;width:85px;font-size:24px;color:#5b5952;text-align:right">1</p>
+<p style="position:absolute;left:0px;top:483px;width:85px;font-size:24px;color:#5b5952;text-align:right">0</p>
+<p style="position:absolute;left:90px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">0</p>
+<p style="position:absolute;left:194px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">1</p>
+<p style="position:absolute;left:297px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">2</p>
+<p style="position:absolute;left:401px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">3</p>
+<p style="position:absolute;left:505px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">4</p>
+<p style="position:absolute;left:609px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">5</p>
+<p style="position:absolute;left:712px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">6</p>
+<p style="position:absolute;left:816px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">7</p>
+<p style="position:absolute;left:920px;top:512px;width:40px;font-size:24px;color:#5b5952;text-align:center">8</p>
+<p style="position:absolute;left:100px;top:12px;width:400px;font-size:24px;color:#5b5952">bits por caractere</p>
+<p style="position:absolute;left:400px;top:552px;width:560px;font-size:24px;color:#5b5952;text-align:right">letras de contexto usadas pelo modelo</p>
+<p style="position:absolute;left:520px;top:12px;width:420px;font-size:24px;color:#5b5952;text-align:right">sem informação: 4,75</p>
+<p style="position:absolute;left:120px;top:424px;width:520px;font-size:24px;color:#5b5952">Shannon, leitores humanos de inglês: ≈ 1</p>
+<p style="position:absolute;left:560px;top:250px;width:140px;font-size:24px;font-weight:600;color:#0b5fa5;text-align:center">1,93</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:4px;border-left:3px solid #1a1a18;padding:8px 0px 8px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;color:#0b5fa5">1,86 a 2,01</p>
+<p style="font-size:26px;line-height:1.35">variação entre os 10 romances de teste, com 5 letras de contexto</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:3px solid #1a1a18;padding:8px 0px 8px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700">≥ 59%</p>
+<p style="font-size:26px;line-height:1.35">do texto é redundante, já decidido pela estrutura da língua</p>
+</div>
+<p style="font-size:26px;line-height:1.4;color:#5b5952">Com mais de 5 letras, piora: faltam dados para combinações tão longas.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Cálculo próprio: n-gramas de caracteres, treino em 9 romances e teste no 10º · barras = menor e maior valor</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">7</p>
+<aside>Tempo: 1 minuto e 30 segundos. Roteiro de fala: "Para medir isso em Machado, treinei modelos simples, que olham as k letras anteriores e calculam a chance de cada letra seguinte, com k de zero a oito. Cada modelo foi treinado em nove romances e avaliado no décimo, que ele nunca viu. O gráfico mostra quantos bits, em média, o modelo precisa para a letra verdadeira. Sem contexto, 3,93. Com cinco letras de contexto, 1,93 bit por caractere, com variação de 1,86 a 2,01 entre os romances de teste. Isso quer dizer que pelo menos 59% do texto é redundante. Repare que com mais de cinco letras a curva volta a subir: combinações tão longas ficam raras demais nos dados, e o modelo passa a decorar em vez de generalizar. Então 1,93 é um limite superior, imposto pelo tamanho do corpus e pela simplicidade do modelo. Shannon, com leitores humanos de inglês e contexto longo, chegou perto de 1 bit; a comparação é só indicativa, porque são línguas e métodos diferentes."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 7 · notas:</b> Tempo: 1 minuto e 30 segundos. Roteiro de fala: "Para medir isso em Machado, treinei modelos simples, que olham as k letras anteriores e calculam a chance de cada letra seguinte, com k de zero a oito. Cada modelo foi treinado em nove romances e avaliado no décimo, que ele nunca viu. O gráfico mostra quantos bits, em média, o modelo precisa para a letra verdadeira. Sem contexto, 3,93. Com cinco letras de contexto, 1,93 bit por caractere, com variação de 1,86 a 2,01 entre os romances de teste. Isso quer dizer que pelo menos 59% do texto é redundante. Repare que com mais de cinco letras a curva volta a subir: combinações tão longas ficam raras demais nos dados, e o modelo passa a decorar em vez de generalizar. Então 1,93 é um limite superior, imposto pelo tamanho do corpus e pela simplicidade do modelo. Shannon, com leitores humanos de inglês e contexto longo, chegou perto de 1 bit; a comparação é só indicativa, porque são línguas e métodos diferentes."</div>
+<div class="palco"><section id="jogo" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 1 · Previsibilidade · ligação com os LLMs</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Do jogo de Shannon ao treino de LLMs</h2>
+</div>
+<div style="display:flex;flex-direction:row;align-items:stretch;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:48px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5b5952">1951 · Shannon</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;line-height:1.15">Uma pessoa adivinha a próxima letra</h3>
+<p style="font-size:32px;line-height:1.4">Ela conhece o texto anterior. O número de tentativas até acertar permite estimar a entropia da língua.</p>
+</div>
+<div style="display:flex;flex-direction:column;justify-content:center">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:120px;font-weight:700;color:#0b5fa5">=</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#ffffff;border:3px solid #1a1a18;border-radius:24px;padding:46px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5b5952">Hoje · modelos de linguagem</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;line-height:1.15">Um modelo prevê o próximo token</h3>
+<p style="font-size:32px;line-height:1.4">Ele vê os tokens anteriores. O treino minimiza a entropia cruzada entre a previsão e o texto real.</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;background:#f5b301;border-radius:12px;padding:24px 32px">A mesma tarefa, não o mesmo mecanismo: o que se compara é o número de bits, não o modo de prever.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Fonte: Shannon, Bell System Technical Journal 30(1), 1951</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">8</p>
+<aside>Tempo: 50 segundos. Roteiro de fala: "Essa medida liga a língua aos modelos de linguagem. Shannon estimou a entropia do inglês pedindo a pessoas que adivinhassem a próxima letra conhecendo o texto anterior. Um modelo de linguagem é treinado exatamente nessa tarefa, prever o próximo pedaço de texto, e o que ele minimiza no treino é a entropia cruzada, a mesma grandeza que acabamos de medir. Por isso dá para comparar humanos, modelos simples como os meus e grandes modelos pela mesma régua, em bits. Mas atenção: é a mesma tarefa, não o mesmo mecanismo. Um leitor humano, uma tabela de contagens e uma rede neural podem chegar a números parecidos por caminhos completamente diferentes."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 8 · notas:</b> Tempo: 50 segundos. Roteiro de fala: "Essa medida liga a língua aos modelos de linguagem. Shannon estimou a entropia do inglês pedindo a pessoas que adivinhassem a próxima letra conhecendo o texto anterior. Um modelo de linguagem é treinado exatamente nessa tarefa, prever o próximo pedaço de texto, e o que ele minimiza no treino é a entropia cruzada, a mesma grandeza que acabamos de medir. Por isso dá para comparar humanos, modelos simples como os meus e grandes modelos pela mesma régua, em bits. Mas atenção: é a mesma tarefa, não o mesmo mecanismo. Um leitor humano, uma tabela de contagens e uma rede neural podem chegar a números parecidos por caminhos completamente diferentes."</div>
+<div class="palco"><section id="zipf" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 2 · Lei de Zipf</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Poucas palavras comuns, muitas raras</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:64px">
+<div style="width:700px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:32px;line-height:1.4">Quando a posição no ranking multiplica por 10, a frequência se divide por cerca de 10: da posição 100 (568 vezes) para a 1.000 (56 vezes).</p>
+<p style="font-size:32px;line-height:1.4">Ou seja: <b>posição × frequência ≈ constante</b>. Isso é uma lei de potência, com expoente α ≈ 1.</p>
+<div style="display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:24px 28px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:48px;font-weight:700">17,4%</p>
+<p style="font-size:24px;line-height:1.3">do texto são 5 palavras: a, que, de, e, o</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:24px 28px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:48px;font-weight:700">46,9%</p>
+<p style="font-size:24px;line-height:1.3">das palavras distintas aparecem uma só vez</p>
+</div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<table style="font-family:Inter, Arial, sans-serif;font-size:30px;color:#1a1a18;padding:14px">
+<tr style="background:#1a1a18"><th style="width:20%;color:#ffffff;text-align:right">Posição</th><th style="width:28%;color:#ffffff">Palavra</th><th style="width:22%;color:#ffffff;text-align:right">Vezes</th><th style="width:30%;color:#ffffff;text-align:right">Posição × vezes</th></tr>
+<tr><td style="text-align:right">10</td><td>os</td><td style="text-align:right">4.857</td><td style="text-align:right">48.570</td></tr>
+<tr style="background:#f6f5f1"><td style="text-align:right">50</td><td>nada</td><td style="text-align:right">1.080</td><td style="text-align:right">54.000</td></tr>
+<tr><td style="text-align:right">100</td><td>pela</td><td style="text-align:right">568</td><td style="text-align:right">56.800</td></tr>
+<tr style="background:#f6f5f1"><td style="text-align:right">500</td><td>houve</td><td style="text-align:right">118</td><td style="text-align:right">59.000</td></tr>
+<tr><td style="text-align:right">1.000</td><td>confesso</td><td style="text-align:right">56</td><td style="text-align:right">56.000</td></tr>
+</table>
+<p style="font-size:26px;line-height:1.4;color:#5b5952">Nas pontas a regra falha um pouco. Por isso o valor de α depende de qual faixa se usa: próximo slide.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Cálculo próprio · 525.067 palavras dos dez romances · Zipf (1936, 1949)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">9</p>
+<aside>Tempo: 1 minuto e 20 segundos. Roteiro de fala: "Segunda ideia: a lei de Zipf. Em qualquer texto grande, poucas palavras são usadíssimas e uma multidão de palavras é rara. Em Machado, só cinco palavras, a, que, de, e, o, somam 17,4% de tudo o que ele escreveu nesses romances, e quase metade das palavras diferentes aparece uma única vez. Zipf notou uma regularidade: quando a posição no ranking multiplica por dez, a frequência se divide por cerca de dez. Em Machado, a palavra na posição 100 aparece 568 vezes, e a da posição mil, 56 vezes. Na tabela, multiplicando a posição pelo número de vezes, o resultado fica parecido, entre 48 e 59 mil. Isso é uma lei de potência com expoente perto de 1, a mesma família de relações que aparece no tamanho das cidades e das empresas. Num gráfico em que cada marca do eixo vale dez vezes a anterior, ela vira uma reta, e o expoente é a inclinação. Mas a regra não é perfeita, principalmente nas pontas, e é aí que entra a pergunta da incerteza."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 9 · notas:</b> Tempo: 1 minuto e 20 segundos. Roteiro de fala: "Segunda ideia: a lei de Zipf. Em qualquer texto grande, poucas palavras são usadíssimas e uma multidão de palavras é rara. Em Machado, só cinco palavras, a, que, de, e, o, somam 17,4% de tudo o que ele escreveu nesses romances, e quase metade das palavras diferentes aparece uma única vez. Zipf notou uma regularidade: quando a posição no ranking multiplica por dez, a frequência se divide por cerca de dez. Em Machado, a palavra na posição 100 aparece 568 vezes, e a da posição mil, 56 vezes. Na tabela, multiplicando a posição pelo número de vezes, o resultado fica parecido, entre 48 e 59 mil. Isso é uma lei de potência com expoente perto de 1, a mesma família de relações que aparece no tamanho das cidades e das empresas. Num gráfico em que cada marca do eixo vale dez vezes a anterior, ela vira uma reta, e o expoente é a inclinação. Mas a regra não é perfeita, principalmente nas pontas, e é aí que entra a pergunta da incerteza."</div>
+<div class="palco"><section id="incerteza" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 2 · Lei de Zipf · incertezas</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Quanto vale α? Depende de como se mede</h2>
+</div>
+<table style="font-family:Inter, Arial, sans-serif;font-size:26px;color:#1a1a18;background:#ffffff;padding:12px">
+<tr style="background:#1a1a18"><th style="width:34%;color:#ffffff">Método</th><th style="width:36%;color:#ffffff">Dados usados</th><th style="width:30%;color:#ffffff;text-align:right">α estimado</th></tr>
+<tr><td>Reta em escala log-log</td><td>posições 1 a 100</td><td style="text-align:right">0,97</td></tr>
+<tr style="background:#f6f5f1"><td>Reta em escala log-log</td><td>posições 10 a 1.000</td><td style="text-align:right">0,99</td></tr>
+<tr><td>Reta em escala log-log</td><td>posições 10 a 5.000</td><td style="text-align:right">1,04 (IC 95%: 1,037 a 1,041)</td></tr>
+<tr style="background:#f6f5f1"><td>Reta em escala log-log</td><td>posições 100 a 10.000</td><td style="text-align:right">1,14</td></tr>
+<tr><td>Máxima verossimilhança</td><td>725 palavras com 82+ ocorrências</td><td style="text-align:right">1,00 (IC 95%: 0,99 a 1,02)</td></tr>
+<tr style="background:#f6f5f1"><td>Um romance por vez</td><td>posições 10 a 1.000</td><td style="text-align:right">0,99 a 1,04</td></tr>
+</table>
+<div style="display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;display:flex;flex-direction:row;align-items:center;gap:24px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:24px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:48px;font-weight:700;width:180px">± 0,02</p>
+<p style="font-size:26px;line-height:1.35;width:520px">incerteza estatística (500 reamostragens)</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;align-items:center;gap:24px;background:#f5b301;border-radius:24px;padding:24px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:48px;font-weight:700;width:330px">0,97 a 1,14</p>
+<p style="font-size:26px;line-height:1.35;width:370px">variação conforme o método: a maior fonte de incerteza</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Cálculo próprio · máxima verossimilhança: Clauset, Shalizi e Newman, SIAM Review 51(4), 2009</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">10</p>
+<aside>Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Quanto vale o expoente em Machado? A resposta honesta é: depende de como se mede. Ajustando uma reta só nas cem palavras mais comuns, dá 0,97. Nas posições de 100 a 10 mil, dá 1,14. O método de máxima verossimilhança, que é o recomendado para leis de potência, dá 1,00 com intervalo de 0,99 a 1,02. Analisando cada romance separadamente, os valores vão de 0,99 a 1,04. Reamostrando o texto 500 vezes, a incerteza estatística é pequena, cerca de dois centésimos. A incerteza que pesa é a de método: de 0,97 a 1,14. Então o resumo justo é alfa igual a 1,0 mais ou menos 0,1. E mesmo um valor bem medido ainda deixa uma pergunta: o que ele prova?"</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 10 · notas:</b> Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Quanto vale o expoente em Machado? A resposta honesta é: depende de como se mede. Ajustando uma reta só nas cem palavras mais comuns, dá 0,97. Nas posições de 100 a 10 mil, dá 1,14. O método de máxima verossimilhança, que é o recomendado para leis de potência, dá 1,00 com intervalo de 0,99 a 1,02. Analisando cada romance separadamente, os valores vão de 0,99 a 1,04. Reamostrando o texto 500 vezes, a incerteza estatística é pequena, cerca de dois centésimos. A incerteza que pesa é a de método: de 0,97 a 1,14. Então o resumo justo é alfa igual a 1,0 mais ou menos 0,1. E mesmo um valor bem medido ainda deixa uma pergunta: o que ele prova?"</div>
+<div class="palco"><section id="nulos" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 2 · Lei de Zipf · o que α ≈ 1 não prova</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Até um texto aleatório segue Zipf</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="position:relative;width:1000px;height:600px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px">
+<svg aria-label="Frequência por posição em escala logarítmica: Machado, texto gerado por n-gramas e digitação aleatória formam retas quase paralelas" width="1000" height="600" viewBox="0 0 1000 600" style="position:absolute;left:0px;top:0px;width:1000px;height:600px">
+<line x1="110" y1="60" x2="110" y2="500" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="298.6" y1="60" x2="298.6" y2="500" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="487.3" y1="60" x2="487.3" y2="500" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="675.9" y1="60" x2="675.9" y2="500" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="864.5" y1="60" x2="864.5" y2="500" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="108.9" x2="960" y2="108.9" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="206.7" x2="960" y2="206.7" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="304.4" x2="960" y2="304.4" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="402.2" x2="960" y2="402.2" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="500" x2="960" y2="500" stroke="#8a877e" stroke-width="2"/>
+<polyline points="110,101.1 166.8,106.3 241.9,136.1 298.6,149.8 355.4,202 430.5,239.7 487.3,265 544.1,296.7 619.1,342.3 675.9,372.8 732.7,402.2 807.8,441.1 864.5,470.6 921.3,500" fill="none" stroke="#a8a59c" stroke-width="5"/>
+<polyline points="110,68.8 166.8,77.7 241.9,90.3 298.6,131.3 355.4,150.6 430.5,203.4 487.3,230.7 544.1,254 619.1,296.3 675.9,326.9 732.7,363.3 807.8,411.7 864.5,453.3 921.3,500" fill="none" stroke="#0b5fa5" stroke-width="8"/>
+<polyline points="110,68.4 166.8,78.1 241.9,90.3 298.6,131 355.4,150.9 430.5,205.2 487.3,233 544.1,261 619.1,304 675.9,336.5 732.7,370.7 807.8,411.7 864.5,453.3 921.3,500" fill="none" stroke="#1a1a18" stroke-width="3" stroke-dasharray="12 8"/>
+</svg>
+<p style="position:absolute;left:0px;top:483px;width:95px;font-size:24px;color:#5b5952;text-align:right">1</p>
+<p style="position:absolute;left:0px;top:385px;width:95px;font-size:24px;color:#5b5952;text-align:right">10</p>
+<p style="position:absolute;left:0px;top:287px;width:95px;font-size:24px;color:#5b5952;text-align:right">100</p>
+<p style="position:absolute;left:0px;top:190px;width:95px;font-size:24px;color:#5b5952;text-align:right">1.000</p>
+<p style="position:absolute;left:0px;top:92px;width:95px;font-size:24px;color:#5b5952;text-align:right">10.000</p>
+<p style="position:absolute;left:80px;top:512px;width:60px;font-size:24px;color:#5b5952;text-align:center">1</p>
+<p style="position:absolute;left:268px;top:512px;width:60px;font-size:24px;color:#5b5952;text-align:center">10</p>
+<p style="position:absolute;left:452px;top:512px;width:70px;font-size:24px;color:#5b5952;text-align:center">100</p>
+<p style="position:absolute;left:626px;top:512px;width:100px;font-size:24px;color:#5b5952;text-align:center">1.000</p>
+<p style="position:absolute;left:810px;top:512px;width:110px;font-size:24px;color:#5b5952;text-align:center">10.000</p>
+<p style="position:absolute;left:110px;top:14px;width:420px;font-size:24px;color:#5b5952">vezes que a palavra aparece</p>
+<p style="position:absolute;left:500px;top:552px;width:460px;font-size:24px;color:#5b5952;text-align:right">posição da palavra no ranking</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px"><hr style="width:48px;border-top:8px solid #0b5fa5"><p style="font-size:28px;font-weight:600">Machado de Assis</p></div>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5">α = 1,04</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px"><hr style="width:48px;border-top:3px dashed #1a1a18"><p style="font-size:28px;font-weight:600">Texto gerado por n-gramas</p></div>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700">α = 1,07</p>
+<p style="font-size:24px;line-height:1.35;color:#5b5952">79% das suas "palavras" não existem</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px"><hr style="width:48px;border-top:5px solid #a8a59c"><p style="font-size:28px;font-weight:600">Digitação aleatória</p></div>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700">α = 1,05</p>
+<p style="font-size:24px;line-height:1.35;color:#5b5952">letras sorteadas, sem gramática nem sentido</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Cálculo próprio · três textos de 2,9 milhões de caracteres (27 símbolos) · α nas posições 10 a 5.000 · Miller (1957)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">11</p>
+<aside>Tempo: 1 minuto. Roteiro de fala: "Para testar o que esse expoente prova, comparei Machado com dois textos artificiais do mesmo tamanho. O primeiro é uma digitação aleatória: cada letra e cada espaço são sorteados com as frequências de Machado, sem gramática, sem sentido, sem memória. O segundo é gerado por um modelo que sorteia cada letra olhando as quatro anteriores; de longe parece português, mas 79% das palavras diferentes que ele produz não existem. No gráfico, a linha tracejada do texto gerado quase cobre a de Machado, e a da digitação aleatória corre paralela, mais abaixo. Os expoentes são 1,04, 1,07 e 1,05. Isso já era conhecido desde Miller, em 1957: palavras curtas surgem mais ao acaso, e isso basta para produzir uma lei de potência. Conclusão: alfa perto de 1, sozinho, não identifica o mecanismo que gerou o texto e não é prova de criticalidade. É exatamente o cuidado do slide 4: estatísticas iguais, mecanismos diferentes."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 11 · notas:</b> Tempo: 1 minuto. Roteiro de fala: "Para testar o que esse expoente prova, comparei Machado com dois textos artificiais do mesmo tamanho. O primeiro é uma digitação aleatória: cada letra e cada espaço são sorteados com as frequências de Machado, sem gramática, sem sentido, sem memória. O segundo é gerado por um modelo que sorteia cada letra olhando as quatro anteriores; de longe parece português, mas 79% das palavras diferentes que ele produz não existem. No gráfico, a linha tracejada do texto gerado quase cobre a de Machado, e a da digitação aleatória corre paralela, mais abaixo. Os expoentes são 1,04, 1,07 e 1,05. Isso já era conhecido desde Miller, em 1957: palavras curtas surgem mais ao acaso, e isso basta para produzir uma lei de potência. Conclusão: alfa perto de 1, sozinho, não identifica o mecanismo que gerou o texto e não é prova de criticalidade. É exatamente o cuidado do slide 4: estatísticas iguais, mecanismos diferentes."</div>
+<div class="palco"><section id="wei" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 3 · Emergência</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Habilidades que "surgem" com a escala</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:30px;line-height:1.4">Wei et al. (2022): uma habilidade é emergente se está ausente nos modelos menores e presente nos maiores. Abaixo de certo tamanho, desempenho de chute.</p>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;border-top:3px solid #1a1a18;padding:16px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5;width:220px">13 bi</p>
+<p style="font-size:28px;line-height:1.35;width:560px">somar números de 3 dígitos (GPT-3)</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;border-top:1px solid #d6d3ca;padding:16px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5;width:220px">175 bi</p>
+<p style="font-size:28px;line-height:1.35;width:560px">somar números de 4 e 5 dígitos (GPT-3)</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;border-top:1px solid #d6d3ca;border-bottom:1px solid #d6d3ca;padding:16px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5;width:220px">540 bi</p>
+<p style="font-size:28px;line-height:1.35;width:560px">Word in Context, sentido de palavras (PaLM)</p>
+</div>
+</div>
+<p style="font-size:24px;color:#5b5952">bi = bilhões de parâmetros</p>
+</div>
+<div style="width:700px;display:flex;flex-direction:column;gap:20px;background:#f6f5f1;border:3px solid #1a1a18;border-radius:24px;padding:44px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5b5952">A crítica · Schaeffer et al. (2023)</p>
+<p style="font-size:30px;line-height:1.4">As habilidades "emergentes" aparecem em métricas de tudo ou nada, como o <b>acerto exato</b>: só conta a resposta inteira certa.</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;color:#0b5fa5">acerto ≈ p^L</p>
+<p style="font-size:28px;line-height:1.4">Se cada símbolo sai certo com chance p, uma resposta de L símbolos sai inteira certa com chance p elevado a L.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Fontes: Wei et al., TMLR 2022, Tabela 1 · Schaeffer, Miranda e Koyejo, NeurIPS 2023</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">12</p>
+<aside>Tempo: 1 minuto. Roteiro de fala: "Terceira ideia: emergência. Em 2022, Wei e colegas chamaram de emergente uma habilidade que não existe nos modelos menores e aparece nos maiores. Por exemplo, somar números de três dígitos aparece no GPT-3 com 13 bilhões de parâmetros; somar números de quatro e cinco dígitos, só com 175 bilhões; uma tarefa sobre o sentido das palavras, só no PaLM, com 540 bilhões. Abaixo desses tamanhos, o desempenho é de chute, e os autores falam em transição de fase. Em 2023, Schaeffer e colegas apontaram um detalhe: essas habilidades costumam ser medidas por acerto exato, que só conta a resposta inteira certa. Se cada símbolo sai certo com chance p, uma resposta de L símbolos sai inteira certa com chance p elevado a L, e isso transforma uma melhora suave numa subida brusca. Para decidir quem tem razão, precisamos das ferramentas da disciplina: um parâmetro de ordem."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 12 · notas:</b> Tempo: 1 minuto. Roteiro de fala: "Terceira ideia: emergência. Em 2022, Wei e colegas chamaram de emergente uma habilidade que não existe nos modelos menores e aparece nos maiores. Por exemplo, somar números de três dígitos aparece no GPT-3 com 13 bilhões de parâmetros; somar números de quatro e cinco dígitos, só com 175 bilhões; uma tarefa sobre o sentido das palavras, só no PaLM, com 540 bilhões. Abaixo desses tamanhos, o desempenho é de chute, e os autores falam em transição de fase. Em 2023, Schaeffer e colegas apontaram um detalhe: essas habilidades costumam ser medidas por acerto exato, que só conta a resposta inteira certa. Se cada símbolo sai certo com chance p, uma resposta de L símbolos sai inteira certa com chance p elevado a L, e isso transforma uma melhora suave numa subida brusca. Para decidir quem tem razão, precisamos das ferramentas da disciplina: um parâmetro de ordem."</div>
+<div class="palco"><section id="parametro" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 3 · Emergência · definições</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Definindo o parâmetro de ordem</h2>
+</div>
+<table style="font-family:Inter, Arial, sans-serif;font-size:26px;color:#1a1a18;background:#ffffff;padding:14px">
+<tr style="background:#1a1a18"><th style="width:22%;color:#ffffff">Elemento</th><th style="width:52%;color:#ffffff">Neste trabalho</th><th style="width:26%;color:#ffffff">No modelo de Ising</th></tr>
+<tr><td><b>Sistema</b></td><td>Modelos que preveem a próxima letra olhando as k anteriores (k de 0 a 8)</td><td>Ímãs numa rede</td></tr>
+<tr style="background:#f6f5f1"><td><b>Variável de controle</b></td><td>Tamanho do modelo: número de parâmetros, de 27 a 2,7 milhões</td><td>Temperatura</td></tr>
+<tr><td><b>Parâmetro de ordem φ</b></td><td>Fração das letras do romance de teste que o modelo acerta</td><td>Magnetização</td></tr>
+<tr style="background:#f6f5f1"><td><b>Métrica de tarefa</b></td><td>Acerto exato: fração das vezes em que acerta L letras seguidas, ≈ φ^L</td><td>Uma função não linear da magnetização</td></tr>
+</table>
+<div style="display:flex;flex-direction:row;align-items:center;gap:32px;background:#1a1a18;border-radius:24px;padding:32px 44px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#f5b301;width:260px">Critério de transição</p>
+<p style="font-size:30px;line-height:1.4;color:#f3f2ed;width:1260px">Haveria transição se o próprio φ mudasse de repente num tamanho crítico, com a taxa de variação dφ/d(log tamanho) crescendo sem limite ali.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Base: Solé, Phase Transitions, 2011 (parâmetro de ordem e suscetibilidade)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">13</p>
+<aside>Tempo: 1 minuto e 30 segundos. Roteiro de fala: "Na unidade de transições de fase, o modelo de Ising separa duas coisas: a variável de controle, a temperatura, que nós mexemos, e o parâmetro de ordem, a magnetização, que mede o estado do sistema. A transição acontece quando a magnetização muda de repente numa temperatura crítica. Vou fazer o mesmo com modelos de linguagem pequenos, que eu consigo treinar: modelos que preveem a próxima letra olhando as k anteriores, com k de zero a oito. A variável de controle é o tamanho do modelo, medido pelo número de parâmetros, de 27 a 2,7 milhões. O parâmetro de ordem, que chamo de fi, é a fração das letras do romance de teste que o modelo acerta. Ele é contínuo e não depende do tamanho da tarefa. E a métrica de tarefa é o acerto exato: acertar L letras seguidas, que vale aproximadamente fi elevado a L. O critério é o da física: só haveria transição se o próprio fi mudasse de repente num tamanho crítico."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 13 · notas:</b> Tempo: 1 minuto e 30 segundos. Roteiro de fala: "Na unidade de transições de fase, o modelo de Ising separa duas coisas: a variável de controle, a temperatura, que nós mexemos, e o parâmetro de ordem, a magnetização, que mede o estado do sistema. A transição acontece quando a magnetização muda de repente numa temperatura crítica. Vou fazer o mesmo com modelos de linguagem pequenos, que eu consigo treinar: modelos que preveem a próxima letra olhando as k anteriores, com k de zero a oito. A variável de controle é o tamanho do modelo, medido pelo número de parâmetros, de 27 a 2,7 milhões. O parâmetro de ordem, que chamo de fi, é a fração das letras do romance de teste que o modelo acerta. Ele é contínuo e não depende do tamanho da tarefa. E a métrica de tarefa é o acerto exato: acertar L letras seguidas, que vale aproximadamente fi elevado a L. O critério é o da física: só haveria transição se o próprio fi mudasse de repente num tamanho crítico."</div>
+<div class="palco"><section id="experimento" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 3 · Emergência · dados próprios</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">O salto só aparece no acerto exato</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="position:relative;width:1060px;height:600px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px">
+<svg aria-label="Em porcentagem do valor final, o acerto por caractere cresce cedo e suave, enquanto o acerto de 10 letras seguidas fica em zero e sobe de repente nos maiores modelos" width="1060" height="600" viewBox="0 0 1060 600" style="position:absolute;left:0px;top:0px;width:1060px;height:600px">
+<line x1="110" y1="80" x2="1000" y2="80" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="185" x2="1000" y2="185" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="395" x2="1000" y2="395" stroke="#ebe9e2" stroke-width="2"/>
+<line x1="110" y1="500" x2="1000" y2="500" stroke="#8a877e" stroke-width="2"/>
+<line x1="110" y1="290" x2="1000" y2="290" stroke="#8a877e" stroke-width="2.5" stroke-dasharray="10 8"/>
+<polyline points="132.1,500 337.2,464.2 501.9,417.1 629.1,341.3 728.8,243.3 812.1,169.2 879.2,123 931.5,95.5 972,80" fill="none" stroke="#a8a59c" stroke-width="4"/>
+<polyline points="132.1,500 337.2,496.7 501.9,485.1 629.1,450 728.8,352.4 812.1,251.7 879.2,175.3 931.5,120.8 972,80" fill="none" stroke="#a8a59c" stroke-width="4"/>
+<polyline points="132.1,500 337.2,500 501.9,500 629.1,499.6 728.8,474.8 812.1,392.1 879.2,289.4 931.5,190.2 972,80" fill="none" stroke="#1a1a18" stroke-width="6" stroke-dasharray="14 8"/>
+<polyline points="132.1,369.8 337.2,292 501.9,229 629.1,170.7 728.8,122.2 812.1,96.2 879.2,84.6 931.5,80.7 972,80" fill="none" stroke="#0b5fa5" stroke-width="7"/>
+<circle cx="132.1" cy="369.8" r="9" fill="#0b5fa5"/>
+<circle cx="337.2" cy="292" r="9" fill="#0b5fa5"/>
+<circle cx="501.9" cy="229" r="9" fill="#0b5fa5"/>
+<circle cx="629.1" cy="170.7" r="9" fill="#0b5fa5"/>
+<circle cx="728.8" cy="122.2" r="9" fill="#0b5fa5"/>
+<circle cx="812.1" cy="96.2" r="9" fill="#0b5fa5"/>
+<circle cx="879.2" cy="84.6" r="9" fill="#0b5fa5"/>
+<circle cx="931.5" cy="80.7" r="9" fill="#0b5fa5"/>
+<circle cx="972" cy="80" r="9" fill="#0b5fa5"/>
+<circle cx="879.2" cy="289.4" r="9" fill="#1a1a18"/>
+<circle cx="337.2" cy="292" r="16" fill="none" stroke="#0b5fa5" stroke-width="3"/>
+<circle cx="879.2" cy="289.4" r="16" fill="none" stroke="#1a1a18" stroke-width="3"/>
+</svg>
+<p style="position:absolute;left:0px;top:63px;width:95px;font-size:24px;color:#5b5952;text-align:right">100%</p>
+<p style="position:absolute;left:0px;top:168px;width:95px;font-size:24px;color:#5b5952;text-align:right">75%</p>
+<p style="position:absolute;left:0px;top:273px;width:95px;font-size:24px;color:#5b5952;text-align:right">50%</p>
+<p style="position:absolute;left:0px;top:378px;width:95px;font-size:24px;color:#5b5952;text-align:right">25%</p>
+<p style="position:absolute;left:0px;top:483px;width:95px;font-size:24px;color:#5b5952;text-align:right">0%</p>
+<p style="position:absolute;left:187px;top:512px;width:80px;font-size:24px;color:#5b5952;text-align:center">100</p>
+<p style="position:absolute;left:345px;top:512px;width:100px;font-size:24px;color:#5b5952;text-align:center">1 mil</p>
+<p style="position:absolute;left:508px;top:512px;width:110px;font-size:24px;color:#5b5952;text-align:center">10 mil</p>
+<p style="position:absolute;left:666px;top:512px;width:130px;font-size:24px;color:#5b5952;text-align:center">100 mil</p>
+<p style="position:absolute;left:829px;top:512px;width:140px;font-size:24px;color:#5b5952;text-align:center">1 milhão</p>
+<p style="position:absolute;left:110px;top:24px;width:700px;font-size:24px;color:#5b5952">% do valor alcançado pelo maior modelo</p>
+<p style="position:absolute;left:400px;top:552px;width:600px;font-size:24px;color:#5b5952;text-align:right">número de parâmetros do modelo</p>
+<p style="position:absolute;left:150px;top:246px;width:180px;font-size:24px;color:#5b5952">metade</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:14px"><hr style="width:44px;border-top:7px solid #0b5fa5"><p style="font-size:26px;font-weight:600">acerto por letra, φ</p></div>
+<p style="font-size:24px;line-height:1.35;color:#5b5952">de 18% a 59,5%; metade do ganho com ~450 parâmetros</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:14px"><hr style="width:44px;border-top:4px solid #a8a59c"><p style="font-size:26px;font-weight:600">3 e 5 letras seguidas</p></div>
+<p style="font-size:24px;line-height:1.35;color:#5b5952">no maior modelo: 23,8% e 9,1%</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:14px"><hr style="width:44px;border-top:6px dashed #1a1a18"><p style="font-size:26px;font-weight:600">10 letras seguidas</p></div>
+<p style="font-size:24px;line-height:1.35;color:#5b5952">zero até 25 mil parâmetros; metade só com ~760 mil; máximo 0,7%</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:3px solid #1a1a18;padding:4px 0px 4px 24px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#0b5fa5">0,12</p>
+<p style="font-size:24px;line-height:1.35">máximo de dφ/d(log tamanho), largo: sem ponto crítico</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Cálculo próprio · média de 10 rodadas (treino em 9 romances, teste no 10º)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">14</p>
+<aside>Tempo: 1 minuto e 45 segundos. Roteiro de fala: "Este é o resultado principal. O eixo horizontal é o tamanho do modelo, do menor ao maior, e cada curva mostra quanto do seu valor final ela já alcançou. A linha azul é o parâmetro de ordem, o acerto por letra. Ela sobe cedo e devagar: vai de 18 a 59,5%, e metade do ganho já acontece com uns 450 parâmetros. A linha preta tracejada são os mesmos modelos, avaliados por acerto exato de dez letras seguidas. Ela fica em zero até uns 25 mil parâmetros e só chega à metade com uns 760 mil. Olhando só para ela, eu diria que uma habilidade surgiu de repente num modelo grande. As curvas cinza, para três e cinco letras, ficam no meio: quanto mais longa a resposta exigida, mais tarde e mais brusco parece o salto. E os números batem com a fórmula fi elevado a L: fi elevado a 10 dá 0,56%, e o medido é 0,73%. Agora, o critério da física: a taxa de variação de fi tem um máximo largo, de 0,12 por década de tamanho, e depois cai. Nada cresce sem limite. Não há ponto crítico: o que existe é uma saturação suave."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 14 · notas:</b> Tempo: 1 minuto e 45 segundos. Roteiro de fala: "Este é o resultado principal. O eixo horizontal é o tamanho do modelo, do menor ao maior, e cada curva mostra quanto do seu valor final ela já alcançou. A linha azul é o parâmetro de ordem, o acerto por letra. Ela sobe cedo e devagar: vai de 18 a 59,5%, e metade do ganho já acontece com uns 450 parâmetros. A linha preta tracejada são os mesmos modelos, avaliados por acerto exato de dez letras seguidas. Ela fica em zero até uns 25 mil parâmetros e só chega à metade com uns 760 mil. Olhando só para ela, eu diria que uma habilidade surgiu de repente num modelo grande. As curvas cinza, para três e cinco letras, ficam no meio: quanto mais longa a resposta exigida, mais tarde e mais brusco parece o salto. E os números batem com a fórmula fi elevado a L: fi elevado a 10 dá 0,56%, e o medido é 0,73%. Agora, o critério da física: a taxa de variação de fi tem um máximo largo, de 0,12 por década de tamanho, e depois cai. Nada cresce sem limite. Não há ponto crítico: o que existe é uma saturação suave."</div>
+<div class="palco"><section id="leitura" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 3 · Emergência · leitura</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">O salto está na régua, não no sistema</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Parâmetro de ordem</p>
+<p style="font-size:30px;line-height:1.4">φ cresce de forma suave e satura. Não há ponto crítico: é uma passagem gradual.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Métrica de tarefa</p>
+<p style="font-size:30px;line-height:1.4">O acerto exato salta porque vale cerca de φ^L: o salto vem da régua.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#ffffff;border:3px solid #1a1a18;border-radius:24px;padding:38px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Para um LLM</p>
+<p style="font-size:30px;line-height:1.4">Uma transição teria de aparecer num parâmetro contínuo e ficar mais abrupta com o tamanho do sistema.</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4;background:#f5b301;border-radius:12px;padding:24px 32px">Limite: um modelo de n-gramas não é um LLM. O experimento mostra o efeito da métrica, não que toda emergência seja ilusória.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Base: Solé (2011); Schaeffer, Miranda e Koyejo (2023)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">15</p>
+<aside>Tempo: 50 segundos. Roteiro de fala: "O que concluo disso? No parâmetro de ordem, a mudança é suave e satura; não há ponto crítico. Na métrica de acerto exato, aparece um salto, mas ele vem da régua: o acerto exato vale cerca de fi elevado a L. Para afirmar que um grande modelo de linguagem passa por uma transição de fase, seria preciso mostrar o salto num parâmetro contínuo, por exemplo a probabilidade média do símbolo correto, e mostrar que ele fica mais abrupto quando o sistema cresce, como numa transição de verdade. E um limite importante: meu modelo de n-gramas não é um LLM. O experimento mostra o efeito da métrica; ele não prova que toda emergência seja ilusória."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 15 · notas:</b> Tempo: 50 segundos. Roteiro de fala: "O que concluo disso? No parâmetro de ordem, a mudança é suave e satura; não há ponto crítico. Na métrica de acerto exato, aparece um salto, mas ele vem da régua: o acerto exato vale cerca de fi elevado a L. Para afirmar que um grande modelo de linguagem passa por uma transição de fase, seria preciso mostrar o salto num parâmetro contínuo, por exemplo a probabilidade média do símbolo correto, e mostrar que ele fica mais abrupto quando o sistema cresce, como numa transição de verdade. E um limite importante: meu modelo de n-gramas não é um LLM. O experimento mostra o efeito da métrica; ele não prova que toda emergência seja ilusória."</div>
+<div class="palco"><section id="conclusao" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Conclusão</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Três ideias para levar</h2>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;align-items:center;gap:48px;border-top:3px solid #1a1a18;padding:28px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;color:#0b5fa5;width:80px">1</p>
+<p style="font-size:34px;line-height:1.35;width:1480px"><b>Previsibilidade.</b> Com 5 letras de contexto, Machado custa 1,93 bit por letra, contra 4,75 sem informação: pelo menos 59% do texto é redundante.</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:48px;border-top:1px solid #d6d3ca;padding:28px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;color:#0b5fa5;width:80px">2</p>
+<p style="font-size:34px;line-height:1.35;width:1480px"><b>Lei de Zipf.</b> α = 1,0 ± 0,1, conforme o método. Um texto aleatório também dá α ≈ 1: o expoente não revela o mecanismo.</p>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:48px;border-top:1px solid #d6d3ca;border-bottom:1px solid #d6d3ca;padding:28px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;color:#0b5fa5;width:80px">3</p>
+<p style="font-size:34px;line-height:1.35;width:1480px"><b>Emergência.</b> Com um parâmetro de ordem definido, o salto aparece só na métrica de acerto exato. Emergência em LLMs é uma hipótese a testar.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Limites: um autor, modelos simples, uma variável de controle. Detalhes no artigo.</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">16</p>
+<aside>Tempo: 55 segundos. Roteiro de fala: "Para fechar, três ideias. Primeira: o texto de Machado é muito previsível; com cinco letras de contexto, um modelo simples precisa de 1,93 bit por letra, contra 4,75 sem informação, ou seja, pelo menos 59% do texto é redundante. Segunda: a frequência das palavras segue a lei de Zipf com expoente 1,0 mais ou menos 0,1, mas um texto aleatório também segue; o expoente sozinho não revela o mecanismo. Terceira: quando definimos um parâmetro de ordem e uma variável de controle, o salto de desempenho aparece só na métrica de acerto exato. Por isso a emergência nos grandes modelos de linguagem deve ser tratada como uma hipótese a testar, com as ferramentas de transições de fase. Os limites do trabalho, um único autor, modelos simples e uma única variável de controle, estão no artigo, junto com todos os métodos."</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 16 · notas:</b> Tempo: 55 segundos. Roteiro de fala: "Para fechar, três ideias. Primeira: o texto de Machado é muito previsível; com cinco letras de contexto, um modelo simples precisa de 1,93 bit por letra, contra 4,75 sem informação, ou seja, pelo menos 59% do texto é redundante. Segunda: a frequência das palavras segue a lei de Zipf com expoente 1,0 mais ou menos 0,1, mas um texto aleatório também segue; o expoente sozinho não revela o mecanismo. Terceira: quando definimos um parâmetro de ordem e uma variável de controle, o salto de desempenho aparece só na métrica de acerto exato. Por isso a emergência nos grandes modelos de linguagem deve ser tratada como uma hipótese a testar, com as ferramentas de transições de fase. Os limites do trabalho, um único autor, modelos simples e uma única variável de controle, estão no artigo, junto com todos os métodos."</div>
+<div class="palco"><section id="referencias" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Referências</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Fontes do seminário</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 64px">
+<p style="font-size:24px;line-height:1.3">BECKNER, C. et al. (Five Graces Group). Language is a complex adaptive system. <i>Language Learning</i>, v. 59, supl. 1, 2009.</p>
+<p style="font-size:24px;line-height:1.3">SHANNON, C. E. Prediction and entropy of printed English. <i>Bell System Technical Journal</i>, v. 30, n. 1, 1951.</p>
+<p style="font-size:24px;line-height:1.3">PIANTADOSI, S. T. Zipf's word frequency law in natural language. <i>Psychonomic Bulletin &amp; Review</i>, v. 21, 2014.</p>
+<p style="font-size:24px;line-height:1.3">CLAUSET, A.; SHALIZI, C. R.; NEWMAN, M. E. J. Power-law distributions in empirical data. <i>SIAM Review</i>, v. 51, n. 4, 2009.</p>
+<p style="font-size:24px;line-height:1.3">MILLER, G. A. Some effects of intermittent silence. <i>The American Journal of Psychology</i>, v. 70, n. 2, 1957.</p>
+<p style="font-size:24px;line-height:1.3">WITTEN, I. H.; BELL, T. C. The zero-frequency problem. <i>IEEE Transactions on Information Theory</i>, v. 37, n. 4, 1991.</p>
+<p style="font-size:24px;line-height:1.3">WEI, J. et al. Emergent abilities of large language models. <i>TMLR</i>, 2022.</p>
+<p style="font-size:24px;line-height:1.3">SCHAEFFER, R.; MIRANDA, B.; KOYEJO, S. Are emergent abilities of LLMs a mirage? <i>NeurIPS</i>, 2023.</p>
+<p style="font-size:24px;line-height:1.3">SOLÉ, R. V. <i>Phase Transitions</i>. Princeton University Press, 2011.</p>
+<p style="font-size:24px;line-height:1.3">MACHADO DE ASSIS. <i>Obra Completa</i>. Nova Aguilar, 1994 (corpus machado, NLTK).</p>
+</div>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">17</p>
+<aside>Tempo: 5 segundos. Deixar o slide na tela por alguns segundos no vídeo, sem leitura. O artigo traz as referências completas, com links.</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 17 · notas:</b> Tempo: 5 segundos. Deixar o slide na tela por alguns segundos no vídeo, sem leitura. O artigo traz as referências completas, com links.</div>
+<div class="palco"><section id="fim" data-transition="fade" style="display:flex; flex-direction:column; justify-content:space-between; padding:128px; background:#1a1a18">
+  <div style="position:absolute; top:160px; left:1480px; width:240px; height:240px; display:flex; flex-direction:column; background:#f5b301; border-radius:24px">
+  </div>
+  <x-shape kind="line" style="position:absolute; top:560px; left:1240px; width:600px; height:3px; border:3px solid #f3f2ed; transform:rotate(-45deg)"></x-shape>
+  <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#f5b301">SCX 5002 · Sistemas Complexos I · USP EACH</p>
+  <div style="width:1200px; display:flex; flex-direction:column; gap:24px">
+    <h2 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:120px; font-weight:700; line-height:1; letter-spacing:-2px; color:#f3f2ed">Obrigado.</h2>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:44px; line-height:1.3; color:#a8a59c">Métodos, dados e resultados completos no artigo que acompanha este vídeo</p>
+  </div>
+  <div style="width:720px; display:flex; flex-direction:column; gap:8px; padding:24px 0 0; border-top:3px solid #f3f2ed">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:32px; font-weight:600; color:#f3f2ed">Hercules Ramos</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#a8a59c">linkedin.com/in/hercules-ramos</p>
+  </div>
+  <aside>Tempo: 15 segundos. Roteiro de fala: "Obrigado pela atenção. Os métodos, os dados e todos os resultados estão no artigo que acompanha este vídeo. Deixo uma pergunta para a discussão: se a emergência depende da métrica, qual seria o melhor parâmetro de ordem para um grande modelo de linguagem?"</aside>
+</section>
+</div>
+<div class="notas"><b>Slide 18 · notas:</b> Tempo: 15 segundos. Roteiro de fala: "Obrigado pela atenção. Os métodos, os dados e todos os resultados estão no artigo que acompanha este vídeo. Deixo uma pergunta para a discussão: se a emergência depende da métrica, qual seria o melhor parâmetro de ordem para um grande modelo de linguagem?"</div></body></html>

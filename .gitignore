@@ -1,0 +1,12 @@
+# corpus baixado
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# sistema
+.DS_Store
+Thumbs.db

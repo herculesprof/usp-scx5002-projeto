@@ -1,0 +1,47 @@
+<section id="corpus" data-transition="fade" style="background:#ffffff;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Abertura · Os dados</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Do arquivo ao dado: o pré-processamento</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:3px solid #1a1a18;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">1</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Ler os 10 romances na codificação original (Latin-1), com acentos</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">2</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Retirar cabeçalhos editoriais, 728 títulos de capítulo e a marca "FIM"</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">3</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Palavras: minúsculas, letras com acento; "diga-me" conta como uma; sem números nem pontuação</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">4</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Caracteres: sem acentos, 26 letras e o espaço, 27 símbolos como em Shannon</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;border-top:1px solid #d6d3ca;border-bottom:1px solid #d6d3ca;padding:18px 0px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:700;color:#0b5fa5;width:48px">5</p>
+<p style="font-size:28px;line-height:1.35;width:960px">Validação: treinar em 9 romances e testar no 10º, repetindo 10 vezes</p>
+</div>
+</div>
+<div style="width:520px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:28px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;letter-spacing:-1px">525.067</p>
+<p style="font-size:26px;color:#5b5952">palavras, 31.243 distintas</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:28px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;letter-spacing:-1px">2,9 milhões</p>
+<p style="font-size:26px;color:#5b5952">de caracteres (27 símbolos)</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;background:#f6f5f1;border:1px solid #d6d3ca;border-radius:24px;padding:28px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;letter-spacing:-1px">1872 a 1908</p>
+<p style="font-size:26px;color:#5b5952">de Ressurreição a Memorial de Aires</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Machado de Assis, Obra Completa, Nova Aguilar, 1994 · corpus machado do NLTK · processamento próprio em Python</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">5</p>
+<aside>Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Os dados são os dez romances de Machado de Assis, de Ressurreição, de 1872, a Memorial de Aires, de 1908, em domínio público. Antes de medir qualquer coisa, preparei o texto em cinco passos. Primeiro, li os arquivos na codificação original, para não perder os acentos. Segundo, tirei o que não é texto do autor: os cabeçalhos da editora, 728 títulos de capítulo e a palavra FIM no final de cada livro. Os prefácios escritos pelo próprio Machado ficaram. Terceiro, para contar palavras: tudo em minúsculas, palavra é uma sequência de letras, e formas como 'diga-me' contam como uma palavra só. Quarto, para medir caracteres: tirei os acentos e fiquei com 27 símbolos, as 26 letras e o espaço, como Shannon fez em 1951. Quinto, para medir previsibilidade de forma justa, os modelos são treinados em nove romances e testados no décimo, que eles nunca viram, e isso se repete dez vezes. Essas escolhas mexem um pouco nos números, por exemplo, tirar acentos reduz a entropia; elas estão descritas no artigo."</aside>
+</section>

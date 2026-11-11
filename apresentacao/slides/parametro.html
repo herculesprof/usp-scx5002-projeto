@@ -1,0 +1,20 @@
+<section id="parametro" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 3 · Emergência · definições</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Definindo o parâmetro de ordem</h2>
+</div>
+<table style="font-family:Inter, Arial, sans-serif;font-size:26px;color:#1a1a18;background:#ffffff;padding:14px">
+<tr style="background:#1a1a18"><th style="width:22%;color:#ffffff">Elemento</th><th style="width:52%;color:#ffffff">Neste trabalho</th><th style="width:26%;color:#ffffff">No modelo de Ising</th></tr>
+<tr><td><b>Sistema</b></td><td>Modelos que preveem a próxima letra olhando as k anteriores (k de 0 a 8)</td><td>Ímãs numa rede</td></tr>
+<tr style="background:#f6f5f1"><td><b>Variável de controle</b></td><td>Tamanho do modelo: número de parâmetros, de 27 a 2,7 milhões</td><td>Temperatura</td></tr>
+<tr><td><b>Parâmetro de ordem φ</b></td><td>Fração das letras do romance de teste que o modelo acerta</td><td>Magnetização</td></tr>
+<tr style="background:#f6f5f1"><td><b>Métrica de tarefa</b></td><td>Acerto exato: fração das vezes em que acerta L letras seguidas, ≈ φ^L</td><td>Uma função não linear da magnetização</td></tr>
+</table>
+<div style="display:flex;flex-direction:row;align-items:center;gap:32px;background:#1a1a18;border-radius:24px;padding:32px 44px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#f5b301;width:260px">Critério de transição</p>
+<p style="font-size:30px;line-height:1.4;color:#f3f2ed;width:1260px">Haveria transição se o próprio φ mudasse de repente num tamanho crítico, com a taxa de variação dφ/d(log tamanho) crescendo sem limite ali.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Base: Solé, Phase Transitions, 2011 (parâmetro de ordem e suscetibilidade)</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">13</p>
+<aside>Tempo: 1 minuto e 30 segundos. Roteiro de fala: "Na unidade de transições de fase, o modelo de Ising separa duas coisas: a variável de controle, a temperatura, que nós mexemos, e o parâmetro de ordem, a magnetização, que mede o estado do sistema. A transição acontece quando a magnetização muda de repente numa temperatura crítica. Vou fazer o mesmo com modelos de linguagem pequenos, que eu consigo treinar: modelos que preveem a próxima letra olhando as k anteriores, com k de zero a oito. A variável de controle é o tamanho do modelo, medido pelo número de parâmetros, de 27 a 2,7 milhões. O parâmetro de ordem, que chamo de fi, é a fração das letras do romance de teste que o modelo acerta. Ele é contínuo e não depende do tamanho da tarefa. E a métrica de tarefa é o acerto exato: acertar L letras seguidas, que vale aproximadamente fi elevado a L. O critério é o da física: só haveria transição se o próprio fi mudasse de repente num tamanho crítico."</aside>
+</section>

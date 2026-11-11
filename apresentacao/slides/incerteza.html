@@ -1,0 +1,28 @@
+<section id="incerteza" data-transition="fade" style="background:#f6f5f1;color:#1a1a18;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0b5fa5">Ideia 2 · Lei de Zipf · incertezas</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;letter-spacing:-1px;line-height:1.1;color:#1a1a18">Quanto vale α? Depende de como se mede</h2>
+</div>
+<table style="font-family:Inter, Arial, sans-serif;font-size:26px;color:#1a1a18;background:#ffffff;padding:12px">
+<tr style="background:#1a1a18"><th style="width:34%;color:#ffffff">Método</th><th style="width:36%;color:#ffffff">Dados usados</th><th style="width:30%;color:#ffffff;text-align:right">α estimado</th></tr>
+<tr><td>Reta em escala log-log</td><td>posições 1 a 100</td><td style="text-align:right">0,97</td></tr>
+<tr style="background:#f6f5f1"><td>Reta em escala log-log</td><td>posições 10 a 1.000</td><td style="text-align:right">0,99</td></tr>
+<tr><td>Reta em escala log-log</td><td>posições 10 a 5.000</td><td style="text-align:right">1,04 (IC 95%: 1,037 a 1,041)</td></tr>
+<tr style="background:#f6f5f1"><td>Reta em escala log-log</td><td>posições 100 a 10.000</td><td style="text-align:right">1,14</td></tr>
+<tr><td>Máxima verossimilhança</td><td>725 palavras com 82+ ocorrências</td><td style="text-align:right">1,00 (IC 95%: 0,99 a 1,02)</td></tr>
+<tr style="background:#f6f5f1"><td>Um romance por vez</td><td>posições 10 a 1.000</td><td style="text-align:right">0,99 a 1,04</td></tr>
+</table>
+<div style="display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;display:flex;flex-direction:row;align-items:center;gap:24px;background:#ffffff;border:1px solid #d6d3ca;border-radius:24px;padding:24px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:48px;font-weight:700;width:180px">± 0,02</p>
+<p style="font-size:26px;line-height:1.35;width:520px">incerteza estatística (500 reamostragens)</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;align-items:center;gap:24px;background:#f5b301;border-radius:24px;padding:24px 32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:48px;font-weight:700;width:330px">0,97 a 1,14</p>
+<p style="font-size:26px;line-height:1.35;width:370px">variação conforme o método: a maior fonte de incerteza</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#5b5952">Cálculo próprio · máxima verossimilhança: Clauset, Shalizi e Newman, SIAM Review 51(4), 2009</p>
+<p style="position:absolute;right:128px;bottom:64px;width:200px;font-size:24px;color:#5b5952;text-align:right">10</p>
+<aside>Tempo: 1 minuto e 15 segundos. Roteiro de fala: "Quanto vale o expoente em Machado? A resposta honesta é: depende de como se mede. Ajustando uma reta só nas cem palavras mais comuns, dá 0,97. Nas posições de 100 a 10 mil, dá 1,14. O método de máxima verossimilhança, que é o recomendado para leis de potência, dá 1,00 com intervalo de 0,99 a 1,02. Analisando cada romance separadamente, os valores vão de 0,99 a 1,04. Reamostrando o texto 500 vezes, a incerteza estatística é pequena, cerca de dois centésimos. A incerteza que pesa é a de método: de 0,97 a 1,14. Então o resumo justo é alfa igual a 1,0 mais ou menos 0,1. E mesmo um valor bem medido ainda deixa uma pergunta: o que ele prova?"</aside>
+</section>

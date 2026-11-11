@@ -1,0 +1,19 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-14T17:25:00Z"},
+  "lists": "css",
+  "title": "Linguagem como Sistema Complexo",
+  "cover": "cover",
+  "order": ["cover", "roteiro", "cas", "comparacao", "corpus", "info", "entropia", "jogo", "zipf", "incerteza", "nulos", "wei", "parametro", "experimento", "leitura", "conclusao", "referencias", "fim"],
+  "sections": {
+    "s1": {"description": "Abertura: a pergunta, a linguagem como sistema complexo, o que se compara e os dados de Machado de Assis.", "start": "cover"},
+    "s2": {"description": "Ideia 1, previsibilidade: entropia explicada de modo intuitivo e medida com validação cruzada.", "start": "info"},
+    "s3": {"description": "Ideia 2, lei de Zipf: o expoente, suas incertezas e o que ele não demonstra.", "start": "zipf"},
+    "s4": {"description": "Ideia 3, emergência: parâmetro de ordem definido e medido contra uma variável de controle.", "start": "wei"},
+    "s5": {"description": "Conclusão e referências.", "start": "conclusao"}
+  },
+  "faces": {
+    "space-grotesk": {"family": "Space Grotesk", "src": "project/ds/usp/fonts/space-grotesk-latin-wght-normal.woff2"},
+    "inter": {"family": "Inter", "src": "project/ds/usp/fonts/inter-latin-wght-normal.woff2"}
+  }
+}
